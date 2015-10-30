@@ -1,0 +1,36 @@
+﻿<div class="row">
+  <!-- ko ifnot: currentStep() === 0 -->
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="page-header">
+      <h1>
+        <!-- ko with: context -->
+        <span data-bind="text: language.getValue(displayName())"></span>
+        <!-- /ko -->
+        <span style="float: right">
+          <span style="font-weight: bold" data-bind="text: currentStep()"></span>
+          <span>/</span>
+          <span data-bind="text: registerCompanyViewModel() !== undefined ? 2 : 1"></span>
+        </span>
+      </h1>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12" data-bind="compose: context"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-5">
+        <button type="button" class="btn btn-default" data-bind="click: previous, visible: isPreviousButtonVisible, enable: isPreviousButtonEnable, text: language.getValue('back')"></button>
+        <button type="button" class="btn btn-default pull-right" data-bind="click: next, visible: isNextButtonVisible, text: language.getValue('next')"></button>
+        <button type="submit" class="btn btn-primary pull-right" data-bind="click: submit, visible: isSubmitButtonVisible, text: language.getValue('register')"></button>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+  <!-- ko if: currentStep() === 0 -->
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="row">
+        <div class="col-lg-12" data-bind="compose: context"></div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>

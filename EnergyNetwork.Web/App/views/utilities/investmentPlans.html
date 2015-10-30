@@ -1,0 +1,17 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <h3 class="mart3" style="margin-bottom: 10px;" data-bind="text: language.getValue('investments')"></h3>
+        <button type="button" class="btn btn-networkOverview" style="background: white; border-color: #2f7842" data-bind="command: openInvestmentPlanAddDialog">
+          <p>
+            <span class="glyphicon glyphicon-plus"></span>
+            <span data-bind="text: language.getValue('newInvestmentPlan')"></span>
+          </p>
+        </button>
+        <!-- ko foreach: investmentPlans -->
+        <button type="button" class="btn btn-primary btn-networkOverview" data-bind="click: $parent.routeToInvestmentPlan">
+            <span data-bind="textIfExists: investmentName"></span>
+            <span style="left: initial; right: 0;" class="pull-right" data-bind="text: comparisons().length, tooltip: { title: language.getValue('investmentNameBubble_tooltip'), placement: 'left' }"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+</div>

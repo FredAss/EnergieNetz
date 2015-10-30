@@ -1,0 +1,17 @@
+﻿<div class="panel panel-default" data-bind="attr: {id :panelId}">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: {'data-parent' : '#' + panelId, href: '#' + collapseId}">
+                <span data-bind="text: language.getValue(title)"></span>
+            </a>
+            <a href="#" data-bind="click: showDetails" style="float: right; margin: 0 5px 0 5px"><span class="glyphicon glyphicon-search tools hidden-xs"></span></a>
+        </h3>
+    </div>
+    <div data-bind="attr: {id :collapseId}" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div data-bind="attr: {id :chartId}" style="cursor: pointer; height: 303px; width: inherit;">
+                <span data-bind="text: language.getValue('noDataFound')"></span>
+            </div>
+        </div>
+    </div>
+</div>

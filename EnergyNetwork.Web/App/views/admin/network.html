@@ -1,0 +1,43 @@
+﻿<div data-bind="with: model" class="row">
+    <div class="col-md-12">
+        <div class="row mart2">
+            <div class="col-sm-6" style="padding: 0px">
+                <div class="row">
+                    <div class="col-sm-12" data-bind="compose: $parent.networkInfoViewModel">
+                    </div>
+                </div>
+                <div class="row mart2">
+                    <div class="col-sm-12" data-bind="compose: $parent.measuresViewModel">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding: 0px">
+                <div class="col-sm-12" data-bind="compose: $parent.surveysOverviewViewModel"></div>
+            </div>
+        </div>
+      <div class="row mart2">
+        <div class="col-sm-6" data-bind="compose: $parent.totalConsumptionChart">
+        </div>
+        <div class="col-sm-6" data-bind="compose: $parent.companyRanking">
+        </div>
+      </div>
+      <div class="row mart2 col-md-12 col-lg-4">
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.energyConsumptionPieChart">
+        </div>
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.carbonDioxideEmissionPieChart">
+        </div>
+      </div>
+      <div class="row mart2 col-md-12 col-lg-4">
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.energyConsumptionLineChart">
+        </div>
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.carbonDioxideEmissionLineChart">
+        </div>
+      </div>
+      <div class="row mart2 col-md-12 col-lg-4">
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.energyConsumptionBarChart">
+        </div>
+        <div class="col-md-6 col-lg-12 mart2" data-bind="compose: $parent.carbonDioxideEmissionBarChart">
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="form-group">
+  <div class="input-group">
+    <div data-bind="validationElement: model.value">
+      <input id="value" class="form-control" data-bind="valueNumber: value, numberFormat: 'n0', valueUpdate: 'afterkeydown', attr: { readonly: survey.fulfilled(), placeholder: language.getValue('consumptionRate_placeholder') }" />
+    </div>
+    <span class="input-group-btn">
+      <select class="form-control" style="width: auto;" data-bind="value: unit, attr: { disabled: survey.fulfilled() }">
+        <option>kWh</option>
+        <option>MWh</option>
+      </select>
+    </span>
+    <span class="input-group-btn">
+      <select class="form-control" style="margin-left: 10px; width: auto;" data-bind="options: energySources, optionsText: function (item) { return language.getValue(item['name']()); }, value: selectedEnergySource, attr: { disabled: survey.fulfilled() }"></select>
+    </span>
+    <span data-bind="if: !survey.fulfilled()">
+      <span class="input-group-btn glyphicon glyphicon-trash tools centeredTrash" style="padding-left: 10px;" data-bind="command: del, tooltip: { title: language.getValue('deleteRecord'), placement: 'left', delay: { show: 500 } }"></span>
+    </span>
+  </div>
+</div>

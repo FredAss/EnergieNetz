@@ -1,0 +1,19 @@
+﻿<div class="panel panel-default" data-bind="attr: {id :panelId}">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: {'data-parent' : '#' + panelId, href: '#' + collapseId}">
+                <span data-bind="text: language.getValue(title)"></span>
+                <span data-bind="text: '(' + selectedYear() + ')'"></span>
+            </a>
+        </h3>
+    </div>
+    <div data-bind="attr: {id :collapseId}" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div data-bind="attr: {id :chartId}" style="cursor: pointer; height: 250px; width: inherit;"></div>
+        </div>
+        <div class="panel-footer" style="text-align: center;">
+            <button data-bind="click: backwardYear, css: {disabled: selectedYear() == minYear()}" type="button" class="btn btn-default glyphicon glyphicon-chevron-left"></button>
+            <button data-bind="click: forwardYear,  css: {disabled: selectedYear() == maxYear()}" type="button" class="btn btn-default glyphicon glyphicon-chevron-right"></button>
+        </div>
+    </div>
+</div>

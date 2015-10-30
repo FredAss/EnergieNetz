@@ -1,0 +1,16 @@
+﻿<div class="modal-content" style="min-height: 70%; padding: 10px; position: fixed; width: 70%;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="command: cancelChangesCommand" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: displayName"></h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="invitations" class="control-label" data-bind="text: language.getValue('invitations')"></label>
+        <input id="invitations" type="text" class="form-control" data-role="tagsinput" data-bind="attr: { placeholder: language.getValue('emailListInputField_placeholder') }">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-bind="command: cancelChangesCommand, text: language.getValue('cancel'), activity: cancelChangesCommand.isExecuting" data-dismiss="modal"></button>
+      <button type="submit" class="btn btn-primary" data-bind="command: saveChangesCommand, text: language.getValue('send'), activity: saveChangesCommand.isExecuting"></button>
+    </div>
+</div>

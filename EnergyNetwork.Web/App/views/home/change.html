@@ -1,0 +1,36 @@
+﻿<div class="changeSet" data-bind="with: model">
+    <div>
+        <span data-bind="text: language.getValue(eType())"></span>: 
+        <span data-bind="text: eTitle"></span>
+    </div>
+    <!-- ko if: changes().length > 0 -->
+    <div class="change">
+        <div><small data-bind="text: language.getValue('changes')"></small></div>
+        <!-- ko foreach: changes -->
+        <div>
+            <span data-bind="text: $data.eType() != null ? language.getValue($data.eType()) : language.getValue($data.property())"></span>
+            <!-- ko if: $data.property() != null -->
+            <!-- ko if: $data.property().indexOf('Id') != -1 -->
+            <span data-bind="text: language.getValue('modified')"></span> 
+            <!-- /ko -->
+            <!-- ko if: $data.property().indexOf('Id') == -1 -->
+            :
+            <span data-bind="text: $data.propertyType() === 'date' ? $parents[1].formatedDate($data.newValue()) : language.getValue($data.newValue())"></span> 
+          <span class="glyphicon glyphicon-info-sign pull-right" data-bind="tooltip: { title: $data.propertyType() === 'date' ? language.getValue('oldValue') + ': ' + $parents[1].formatedDate($data.oldValue()) : language.getValue('oldValue') + ': ' + language.getValue($data.oldValue()), placement: 'top' }"></span>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: $data.property() == null -->
+            <span data-bind="text: language.getValue($data.actionType().toLowerCase())"></span>
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <div>
+        <span data-bind="text: language.getValue(actionType())"></span>: 
+        <strong><span data-bind="text: username"></span></strong>
+    </div>
+    <div>
+        <small><span data-bind="text: $parent.formatedTimeAgo(date)"></span></small>
+    </div>
+</div>

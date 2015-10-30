@@ -1,0 +1,50 @@
+﻿<div class="row mart2" style="margin-left: -20px; margin-right: -15px;">
+    <div class="col-lg-offset-3 col-lg-6">
+        <form class="form-horizontal">
+            <div class="form-group" data-bind="validationElement: firstName" style="margin-bottom: 15px">
+                <label for="firstName" class="control-label col-md-4" data-bind="text: language.getValue('firstName')"></label>
+                <div class="col-md-8">
+                    <input id="firstName" type="text" class="form-control" data-bind="value: firstName, attr: { placeholder: language.getValue('firstName_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: lastName" style="margin-bottom: 15px">
+                <label for="lastName" class="control-label col-md-4" data-bind="text: language.getValue('lastName')"></label>
+                <div class="col-md-8">
+                    <input id="lastName" type="text" class="form-control" data-bind="value: lastName, attr: { placeholder: language.getValue('lastName_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: username" style="margin-bottom: 15px">
+                <label for="username" class="control-label col-md-4" data-bind="text: language.getValue('userName')"></label>
+                <div class="col-md-8">
+                    <input id="username" type="text" class="form-control" data-bind="value: username, attr: { placeholder: language.getValue('userName_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: email" style="margin-bottom: 15px">
+                <label for="email" class="control-label col-md-4" data-bind="text: language.getValue('email')"></label>
+                <div class="col-md-8">
+                    <input id="email" type="email" class="form-control" data-bind="value: email, attr: { placeholder: language.getValue('email_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: password" style="margin-bottom: 15px">
+                <label for="password" class="control-label col-md-4" data-bind="text: language.getValue('password')"></label>
+                <div class="col-md-8">
+                    <input id="password" type="password" class="form-control" data-bind="value: password, attr: { placeholder: language.getValue('password_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: confirmpassword" style="margin-bottom: 15px">
+                <label for="confirmpassword" class="control-label col-md-4" data-bind="text: language.getValue('confirmPassword')"></label>
+                <div class="col-md-8">
+                    <input id="confirmpassword" type="password" class="form-control" data-bind="value: confirmpassword, attr: { placeholder: language.getValue('confirmPassword_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: phoneNumber" style="margin-bottom: 15px">
+                <label for="phoneNumber" class="control-label col-md-4" data-bind="text: language.getValue('phoneNumber')"></label>
+                <div class="col-md-8">
+                    <input id="phoneNumber" type="tel" class="form-control" data-bind="value: phoneNumber, attr: { placeholder: language.getValue('phoneNumber_placeholder') }" />
+                </div>
+            </div>
+
+         
+        </form>
+    </div>
+</div>

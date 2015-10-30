@@ -1,0 +1,15 @@
+﻿<div class="form-group">
+    <div class="input-group">
+        <input class="form-control" data-bind="valueNumber: value, numberFormat: 'n0', valueUpdate: 'afterkeydown'">
+        <span class="input-group-btn">
+            <select class="form-control" style="width: auto;" data-bind="value: unit">
+                <option>kWh</option>
+                <option>MWh</option>
+            </select>
+        </span>
+        <span class="input-group-btn">
+            <select class="form-control" style="margin: 0 10px; width: auto;" data-bind="options: energySources, optionsText: function (item) { return language.getValue(item['name']()); }, optionsValue: 'energySourceId', value: selectedEnergySource"></select>
+        </span>
+      <span class="input-group-btn pull-right glyphicon glyphicon-trash tools centeredTrash" data-bind="command: del, tooltip: { title: language.getValue('deleteRecord'), placement: 'left', delay: { show: 500 } }"></span>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div class="col-md-12 mart3">
+        <h3 style="margin-bottom: 10px;" data-bind="text: language.getValue('currentNetworks')"></h3>
+        <!-- ko  foreach : currentNetworks -->
+        <button type="button" class="btn btn-primary btn-networkOverview" data-bind="click: $parent.routeToNetwork">
+          <span data-bind="text: name()"></span>
+          <span style="left: initial; right: 0;" class="pull-right" data-bind="text: networkCompanies().length, tooltip: { title: language.getValue('participant'), placement: 'left' }"></span>
+        </button>
+        <!-- /ko -->
+        <button type="button" class="btn btn-networkOverview" style="background: white; border-color: #2f7842" data-bind="click: openNetworkAddDialog">
+            <p>
+                <span class="glyphicon glyphicon-plus"></span>
+                <span data-bind="text: language.getValue('newNetwork')"></span>
+            </p>
+        </button>
+    </div>
+    <div class="col-md-12 mart3">
+        <h3 style="margin-bottom: 10px;" data-bind="text: language.getValue('closedNetworks')"></h3>
+        <!-- ko  foreach : closedNetworks -->
+        <button type="button" class="btn btn-default btn-networkOverview" data-bind="click: $parent.routeToNetwork">
+          <span data-bind="text: name()"></span>
+          <span style="left: initial; right: 0;" class="pull-right" data-bind="text: networkCompanies().length, tooltip: { title: language.getValue('participant'), placement: 'left' }"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+</div>

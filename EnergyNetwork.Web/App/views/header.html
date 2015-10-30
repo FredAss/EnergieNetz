@@ -1,0 +1,89 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a data-bind="attr: { href: router.convertRouteToHash('') }" class="navbar-brand"><img class="logo" src="/Content/images/Logo_transparent.png" alt="Logo" />EnergieNetz</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-main-collapse" style="height: 0px;">
+        <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
+            <!-- ko  if : (typeof(authorize) == 'undefined') -->
+            <li data-bind="css: { active: isActive }">
+                <a data-bind="attr: { href: $parent.router.convertRouteToHash(hash) }, text: language.getValue(title)"></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko  if : !(typeof(authorize) == 'undefined') -->
+            <!-- ko if : !(typeof($parent.appsecurity.userInfo()) == 'undefined') && $parent.appsecurity.isUserInRole(authorize) && $parent.appsecurity.isUserActivated() -->
+            <li data-bind="css: { active: isActive }">
+                <a data-bind="attr: { href: $parent.router.convertRouteToHash(hash) }, text: language.getValue(title)"></a>
+            </li>
+            <!-- /ko -->
+            <!-- /ko -->
+        </ul>
+      <ul class="nav navbar-nav" data-bind="if: !(typeof (appsecurity.userInfo()) == 'undefined') && appsecurity.isUserActivated()" style="margin-right: 0">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span data-bind="text: language.getValue('tools')"></span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" data-bind="foreach: router.routes">
+            <li data-bind="if: route.indexOf('utilities') !== -1">
+              <a data-bind="attr: { href: $parent.router.convertRouteToHash(hash) }, text: language.getValue(title)"></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+        <ul class="nav navbar-nav navbar-right" data-bind="if: !(typeof (appsecurity.userInfo()) == 'undefined')">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>&nbsp; <span data-bind="text: language.getValue('greeting')"></span> <span data-bind="    text: appsecurity.userInfo().name" style="text-transform: uppercase"></span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-bind="text: language.getValue('options')" role="presentation" class="dropdown-header"></li>
+                    <li>
+                        <a data-bind="attr: { href: router.convertRouteToHash('/account/accountmanagement') }">
+                            <span class="fa fa-user-md"></span>
+                            <span data-bind="text:language.getValue('account')"></span>
+                            
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#" data-bind="click: logout">
+                            <span class="fa fa-sign-out"></span>
+                            <span data-bind="text:language.getValue('logout')"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 0">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span>
+                        <img data-bind="attr: { src: '/Content/flaggs/' + selectedLanguage() + '.png', alt: ' ' + selectedLanguage() }"/> 
+                        <span data-bind="text: selectedLanguage()"></span>
+                    </span>
+                    <b class="caret"></b>
+                </a>
+                <ul id="languageselector" class="dropdown-menu">
+                    <li><a role="menuitem" tabindex="-1" href="#" data-bind="click: function () { lang.change('de-DE') }"><img src="/Content/flaggs/de-DE.png" alt="de-DE"/> <span>de-DE</span></a></li>
+                    <li><a role="menuitem" tabindex="-1" href="#" data-bind="click: function () { lang.change('en-US') }"><img src="/Content/flaggs/en-US.png" alt="en-US"/> <span>en-US</span></a></li>
+                </ul>
+            </li>
+        </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 0">
+        <li>
+          <a data-bind="attr: { href: router.convertRouteToHash('/home/impressum') }"><span data-bind="text: language.getValue('legalInfo')"></span></a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 0">
+            <li>
+                <a data-bind="attr: { href: router.convertRouteToHash('/home/datenschutz') }"><span data-bind="text: language.getValue('privacy')"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>

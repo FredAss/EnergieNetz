@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7AB3DCB4-C479-4348-A2AA-D1E8BB6495AB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnergyNetwork.Web</RootNamespace>
+    <AssemblyName>EnergyNetwork.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>bbb156dd</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.ContextProvider, Version=1.4.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.Server.ContextProvider.1.4.16\lib\Breeze.ContextProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.ContextProvider.EF6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.Server.ContextProvider.EF6.1.4.16\lib\Breeze.ContextProvider.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.WebApi2, Version=1.4.0.0, Culture=neutral, PublicKeyToken=f6085f1a45e2ac59, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Breeze.Server.WebApi2.1.4.16\lib\Breeze.WebApi2.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.95\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.3.1.3.3\lib\net35\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker.NET4">
+      <HintPath>..\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Cors.2.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.1.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.2.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.3.0.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Services" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.2.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.0\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\commands\addImportantTopic.js" />
+    <Content Include="App\commands\addReading.js" />
+    <Content Include="App\commands\addProductionTime.js" />
+    <Content Include="App\commands\addProduct.js" />
+    <Content Include="App\commands\addArea.js" />
+    <Content Include="App\commands\addDocument.js" />
+    <Content Include="App\commands\deleteInvitation.js" />
+    <Content Include="App\commands\deleteImportantTopic.js" />
+    <Content Include="App\commands\deleteInvestmentPlan.js" />
+    <Content Include="App\commands\deleteComparison.js" />
+    <Content Include="App\commands\deleteReading.js" />
+    <Content Include="App\commands\deleteProductionTime.js" />
+    <Content Include="App\commands\deleteProduct.js" />
+    <Content Include="App\commands\deleteArea.js" />
+    <Content Include="App\commands\deleteDocument.js" />
+    <Content Include="App\commands\exportCompanyData.js" />
+    <Content Include="App\commands\exportMeasureData.js" />
+    <Content Include="App\commands\exportNetworkData.js" />
+    <Content Include="App\commands\deleteEnergySaving.js" />
+    <Content Include="App\commands\deleteNetwork.js" />
+    <Content Include="App\commands\deleteMeasure.js" />
+    <Content Include="App\commands\cancel.js" />
+    <Content Include="App\commands\addEnergySaving.js" />
+    <Content Include="App\commands\openComparisonEditDialog.js" />
+    <Content Include="App\commands\openComparisonAddDialog.js" />
+    <Content Include="App\commands\openMeasureAddDialog.js" />
+    <Content Include="App\commands\openCompanyEditDialog.js" />
+    <Content Include="App\commands\openInvestmentPlanAddDialog.js" />
+    <Content Include="App\commands\openInvestmentPlanEditDialog.js" />
+    <Content Include="App\commands\openUserAddToCompanyDialog.js" />
+    <Content Include="App\commands\openUserAddDialog.js" />
+    <Content Include="App\commands\openNetworkEditDialog.js" />
+    <Content Include="App\commands\openNetworkAddDialog.js" />
+    <Content Include="App\commands\openMeasureEditDialog.js" />
+    <Content Include="App\commands\saveCompany.js" />
+    <Content Include="App\commands\saveInvestmentPlan.js" />
+    <Content Include="App\commands\saveComparison.js" />
+    <Content Include="App\commands\saveUserInvitation.js" />
+    <Content Include="App\commands\sendSurvey.js" />
+    <Content Include="App\commands\saveSurvey.js" />
+    <Content Include="App\commands\saveNetwork.js" />
+    <Content Include="App\commands\saveMeasure.js" />
+    <Content Include="App\factories\chartFactory.js" />
+    <Content Include="App\languages\de_DE.js" />
+    <Content Include="App\languages\en_US.js" />
+    <Content Include="App\main.js" />
+    <Content Include="App\model\modelBuilder.js" />
+    <Content Include="App\services\appsecurity.js" />
+    <Content Include="App\services\breeze.validationMessageTemplate.js" />
+    <Content Include="App\services\constants.js" />
+    <Content Include="App\services\changeTracker.js" />
+    <Content Include="App\services\changesetrepository.js" />
+    <Content Include="App\services\languagehandler.js" />
+    <Content Include="App\services\submenuBuilder.js" />
+    <Content Include="App\services\measuresDetailExtractor.js" />
+    <Content Include="App\services\helpers.js" />
+    <Content Include="App\services\measurerepository.js" />
+    <Content Include="App\services\entitymanagerprovider.js" />
+    <Content Include="App\services\errorhandler.js" />
+    <Content Include="App\services\networkcompanyrepository.js" />
+    <Content Include="App\services\extractChartData.js" />
+    <Content Include="App\services\fillChartDetail.js" />
+    <Content Include="App\services\logger.js" />
+    <Content Include="App\services\networkrepository.js" />
+    <Content Include="App\services\repository.js" />
+    <Content Include="App\services\routeconfig.js" />
+    <Content Include="App\services\unitofwork.js" />
+    <Content Include="App\services\utils.js" />
+    <Content Include="App\viewmodels\account\registerCompany.js" />
+    <Content Include="App\viewmodels\account\invitationNotFound.js" />
+    <Content Include="App\viewmodels\account\externalloginconfirmation.js" />
+    <Content Include="App\viewmodels\account\externalloginfailure.js" />
+    <Content Include="App\viewmodels\account\forgotpassword.js" />
+    <Content Include="App\viewmodels\account\accountManagement.js" />
+    <Content Include="App\viewmodels\account\registerManagement.js" />
+    <Content Include="App\viewmodels\account\registerUser.js" />
+    <Content Include="App\viewmodels\account\waitingForActivation.js" />
+    <Content Include="App\viewmodels\account\registrationcomplete.js" />
+    <Content Include="App\viewmodels\account\registrationFailed.js" />
+    <Content Include="App\viewmodels\account\resetpassword.js" />
+    <Content Include="App\viewmodels\admin\companyRankingByAreaSize.js" />
+    <Content Include="App\viewmodels\admin\companyRankingByTotalRevenue.js" />
+    <Content Include="App\viewmodels\admin\companyRankingByEmployee.js" />
+    <Content Include="App\viewmodels\admin\companyRanking.js" />
+    <Content Include="App\viewmodels\admin\networkInfo.js" />
+    <Content Include="App\viewmodels\admin\networkManagement.js" />
+    <Content Include="App\viewmodels\admin\surveysOverview.js" />
+    <Content Include="App\viewmodels\home\area.js" />
+    <Content Include="App\viewmodels\home\areasEdit.js" />
+    <Content Include="App\viewmodels\home\datenschutz.js" />
+    <Content Include="App\viewmodels\admin\userAdd.js" />
+    <Content Include="App\viewmodels\home\_chart.js" />
+    <Content Include="App\viewmodels\home\documentsEdit.js" />
+    <Content Include="App\viewmodels\home\importantTopicsEdit.js" />
+    <Content Include="App\viewmodels\home\companySizeEdit.js" />
+    <Content Include="App\viewmodels\home\fiscalYearEdit.js" />
+    <Content Include="App\viewmodels\home\invitationEdit.js" />
+    <Content Include="App\viewmodels\admin\networkEdit.js" />
+    <Content Include="App\viewmodels\admin\user.js" />
+    <Content Include="App\viewmodels\admin\userManagement.js" />
+    <Content Include="App\viewmodels\admin\users.js" />
+    <Content Include="App\viewmodels\header.js" />
+    <Content Include="App\viewmodels\home\chart.js" />
+    <Content Include="App\viewmodels\home\chartDetail.js" />
+    <Content Include="App\factories\mapFactory.js" />
+    <Content Include="App\viewmodels\home\company.js" />
+    <Content Include="App\viewmodels\home\companyEdit.js" />
+    <Content Include="App\viewmodels\home\energySaving.js" />
+    <Content Include="App\viewmodels\home\impressum.js" />
+    <Content Include="App\viewmodels\home\change.js" />
+    <Content Include="App\viewmodels\home\changeLog.js" />
+    <Content Include="App\viewmodels\home\measureEdit.js" />
+    <Content Include="App\viewmodels\home\operationTimeEdit.js" />
+    <Content Include="App\viewmodels\home\product.js" />
+    <Content Include="App\viewmodels\home\importantTopic.js" />
+    <Content Include="App\viewmodels\home\document.js" />
+    <Content Include="App\viewmodels\home\productionTime.js" />
+    <Content Include="App\viewmodels\home\productionTimesEdit.js" />
+    <Content Include="App\viewmodels\home\productsEdit.js" />
+    <Content Include="App\viewmodels\home\reading.js" />
+    <Content Include="App\viewmodels\home\readingsEdit.js" />
+    <Content Include="App\viewmodels\home\surveyEdit.js" />
+    <Content Include="App\viewmodels\home\surveysOverview.js" />
+    <Content Include="App\viewmodels\datetimepicker.js" />
+    <Content Include="App\viewmodels\optionselector.js" />
+    <Content Include="App\viewmodels\user\dashboard.js" />
+    <Content Include="App\viewmodels\home\map.js" />
+    <Content Include="App\viewmodels\home\measures.js" />
+    <Content Include="App\viewmodels\home\measuresDetail.js" />
+    <Content Include="App\viewmodels\admin\network.js" />
+    <Content Include="App\viewmodels\admin\networkOverview.js" />
+    <Content Include="App\viewmodels\admin\networks.js" />
+    <Content Include="App\viewmodels\home\index.js" />
+    <Content Include="App\viewmodels\home\pieChart.js" />
+    <Content Include="App\viewmodels\notfound.js" />
+    <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\user\userAdd.js" />
+    <Content Include="App\viewmodels\utilities\additionalAnnualCostsAndRevenues.js" />
+    <Content Include="App\viewmodels\utilities\additionalOperatingLife.js" />
+    <Content Include="App\viewmodels\utilities\additionalInvestment.js" />
+    <Content Include="App\viewmodels\utilities\comparison.js" />
+    <Content Include="App\viewmodels\utilities\comparisonEdit.js" />
+    <Content Include="App\viewmodels\utilities\investmentPlanEdit.js" />
+    <Content Include="App\viewmodels\utilities\investmentPlan.js" />
+    <Content Include="App\viewmodels\utilities\investmentPlans.js" />
+    <Content Include="App\viewmodels\utilities\investmentManagement.js" />
+    <Content Include="App\views\account\registerCompany.html" />
+    <Content Include="App\views\account\invitationNotFound.html" />
+    <Content Include="App\views\account\externalloginconfirmation.html" />
+    <Content Include="App\views\account\externalloginfailure.html" />
+    <Content Include="App\views\account\forgotpassword.html" />
+    <Content Include="App\views\account\login.html" />
+    <Content Include="App\views\account\accountManagement.html" />
+    <Content Include="App\views\account\registerManagement.html" />
+    <Content Include="App\views\account\registerUser.html" />
+    <Content Include="App\views\account\waitingForActivation.html" />
+    <Content Include="App\views\account\registrationcomplete.html" />
+    <Content Include="App\views\account\registrationFailed.html" />
+    <Content Include="App\views\account\resetpassword.html" />
+    <Content Include="App\views\admin\companyRankingByAreaSize.html" />
+    <Content Include="App\views\admin\companyRankingByTotalRevenue.html" />
+    <Content Include="App\views\admin\companyRankingByEmployee.html" />
+    <Content Include="App\views\admin\companyRanking.html" />
+    <Content Include="App\views\admin\networkManagement.html" />
+    <Content Include="App\views\admin\surveysOverview.html" />
+    <Content Include="App\views\home\area.html" />
+    <Content Include="App\views\home\areasEdit.html" />
+    <Content Include="App\views\home\importantTopicsEdit.html" />
+    <Content Include="App\views\home\documentsEdit.html" />
+    <Content Include="App\views\home\companySizeEdit.html" />
+    <Content Include="App\views\home\fiscalYearEdit.html" />
+    <Content Include="App\views\home\datenschutz.html" />
+    <Content Include="App\views\home\invitationEdit.html" />
+    <Content Include="App\views\admin\networkEdit.html" />
+    <Content Include="App\views\admin\user.html" />
+    <Content Include="App\views\admin\userManagement.html" />
+    <Content Include="App\views\admin\users.html" />
+    <Content Include="App\views\header.html" />
+    <Content Include="App\views\home\chart.html" />
+    <Content Include="App\views\home\chartDetail.html" />
+    <Content Include="App\views\home\company.html" />
+    <Content Include="App\views\home\companyEdit.html" />
+    <Content Include="App\views\home\energySaving.html" />
+    <Content Include="App\views\home\change.html" />
+    <Content Include="App\views\home\changeLog.html" />
+    <Content Include="App\views\admin\userAdd.html" />
+    <Content Include="App\views\home\measureEdit.html" />
+    <Content Include="App\views\home\impressum.html" />
+    <Content Include="App\views\home\operationTimeEdit.html" />
+    <Content Include="App\views\home\product.html" />
+    <Content Include="App\views\home\importantTopic.html" />
+    <Content Include="App\views\home\document.html" />
+    <Content Include="App\views\home\productionTime.html" />
+    <Content Include="App\views\home\productionTimesEdit.html" />
+    <Content Include="App\views\home\productsEdit.html" />
+    <Content Include="App\views\home\reading.html" />
+    <Content Include="App\views\home\readingsEdit.html" />
+    <Content Include="App\views\home\surveyEdit.html" />
+    <Content Include="App\views\home\surveysOverview.html" />
+    <Content Include="App\views\datetimepicker.html" />
+    <Content Include="App\views\home\_chart.html" />
+    <Content Include="App\views\optionselector.html" />
+    <Content Include="App\views\user\dashboard.html" />
+    <Content Include="App\views\home\map.html" />
+    <Content Include="App\views\home\measures.html" />
+    <Content Include="App\views\home\measuresDetail.html" />
+    <Content Include="App\views\admin\network.html" />
+    <Content Include="App\views\admin\networkInfo.html" />
+    <Content Include="App\views\admin\networkOverview.html" />
+    <Content Include="App\views\admin\networks.html" />
+    <Content Include="App\views\home\index.html" />
+    <Content Include="App\views\home\pieChart.html" />
+    <Content Include="App\views\notfound.html" />
+    <Content Include="App\views\shell.html" />
+    <Content Include="App\views\user\userAdd.html" />
+    <Content Include="App\views\utilities\additionalAnnualCostsAndRevenues.html" />
+    <Content Include="App\views\utilities\additionalOperatingLife.html" />
+    <Content Include="App\views\utilities\additionalInvestment.html" />
+    <Content Include="App\views\utilities\comparison.html" />
+    <Content Include="App\views\utilities\comparisonEdit.html" />
+    <Content Include="App\views\utilities\investmentPlanEdit.html" />
+    <Content Include="App\views\utilities\investmentPlan.html" />
+    <Content Include="App\views\utilities\investmentPlans.html" />
+    <Content Include="App\views\utilities\investmentManagement.html" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme-white-plum-energieNetz\dist\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-theme-white-plum-energieNetz\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap-whiteplum.css" />
+    <Content Include="Content\icons\icon_angles.png" />
+    <Content Include="Content\icons\icon_cloud.png" />
+    <Content Include="Content\icons\icon_data.png" />
+    <Content Include="Content\icons\icon_library.png" />
+    <Content Include="Content\icons\icon_lock.png" />
+    <Content Include="Content\icons\icon_project.png" />
+    <Content Include="Content\icons\icon_question.png" />
+    <Content Include="Content\icons\icon_seo.png" />
+    <Content Include="Content\icons\icon_social.png" />
+    <Content Include="Content\icons\icon_user.png" />
+    <Content Include="Content\icons\logo.png" />
+    <Content Include="Content\icons\no_photo.png" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\icon.png" />
+    <Content Include="Content\images\ios-startup-image-landscape.png" />
+    <Content Include="Content\images\ios-startup-image-portrait.png" />
+    <Content Include="Content\images\layers-2x.png" />
+    <Content Include="Content\images\layers.png" />
+    <Content Include="Content\images\Logo_transparent.png" />
+    <Content Include="Content\images\marker-icon-2x.png" />
+    <Content Include="Content\images\marker-icon.png" />
+    <Content Include="Content\images\marker-shadow.png" />
+    <Content Include="Content\images\spinner.png" />
+    <Content Include="Content\Stashy.css" />
+    <Content Include="Content\Stashy.min.css" />
+    <Content Include="Content\vs.css" />
+    <Content Include="Content\flaggs\ad.png" />
+    <Content Include="Content\flaggs\ae.png" />
+    <Content Include="Content\flaggs\af.png" />
+    <Content Include="Content\flaggs\ag.png" />
+    <Content Include="Content\flaggs\ai.png" />
+    <Content Include="Content\flaggs\al.png" />
+    <Content Include="Content\flaggs\am.png" />
+    <Content Include="Content\flaggs\an.png" />
+    <Content Include="Content\flaggs\ao.png" />
+    <Content Include="Content\flaggs\ar.png" />
+    <Content Include="Content\flaggs\as.png" />
+    <Content Include="Content\flaggs\at.png" />
+    <Content Include="Content\flaggs\au.png" />
+    <Content Include="Content\flaggs\aw.png" />
+    <Content Include="Content\flaggs\ax.png" />
+    <Content Include="Content\flaggs\az.png" />
+    <Content Include="Content\flaggs\ba.png" />
+    <Content Include="Content\flaggs\bb.png" />
+    <Content Include="Content\flaggs\bd.png" />
+    <Content Include="Content\flaggs\be.png" />
+    <Content Include="Content\flaggs\bf.png" />
+    <Content Include="Content\flaggs\bg.png" />
+    <Content Include="Content\flaggs\bh.png" />
+    <Content Include="Content\flaggs\bi.png" />
+    <Content Include="Content\flaggs\bj.png" />
+    <Content Include="Content\flaggs\bm.png" />
+    <Content Include="Content\flaggs\bn.png" />
+    <Content Include="Content\flaggs\bo.png" />
+    <Content Include="Content\flaggs\br.png" />
+    <Content Include="Content\flaggs\bs.png" />
+    <Content Include="Content\flaggs\bt.png" />
+    <Content Include="Content\flaggs\bv.png" />
+    <Content Include="Content\flaggs\bw.png" />
+    <Content Include="Content\flaggs\by.png" />
+    <Content Include="Content\flaggs\bz.png" />
+    <Content Include="Content\flaggs\ca.png" />
+    <Content Include="Content\flaggs\catalonia.png" />
+    <Content Include="Content\flaggs\cc.png" />
+    <Content Include="Content\flaggs\cd.png" />
+    <Content Include="Content\flaggs\cf.png" />
+    <Content Include="Content\flaggs\cg.png" />
+    <Content Include="Content\flaggs\ch.png" />
+    <Content Include="Content\flaggs\ci.png" />
+    <Content Include="Content\flaggs\ck.png" />
+    <Content Include="Content\flaggs\cl.png" />
+    <Content Include="Content\flaggs\cm.png" />
+    <Content Include="Content\flaggs\cn.png" />
+    <Content Include="Content\flaggs\co.png" />
+    <Content Include="Content\flaggs\cr.png" />
+    <Content Include="Content\flaggs\cs.png" />
+    <Content Include="Content\flaggs\cu.png" />
+    <Content Include="Content\flaggs\cv.png" />
+    <Content Include="Content\flaggs\cx.png" />
+    <Content Include="Content\flaggs\cy.png" />
+    <Content Include="Content\flaggs\cz.png" />
+    <Content Include="Content\flaggs\de-DE.png" />
+    <Content Include="Content\flaggs\dj.png" />
+    <Content Include="Content\flaggs\dk.png" />
+    <Content Include="Content\flaggs\dm.png" />
+    <Content Include="Content\flaggs\do.png" />
+    <Content Include="Content\flaggs\dz.png" />
+    <Content Include="Content\flaggs\ec.png" />
+    <Content Include="Content\flaggs\ee.png" />
+    <Content Include="Content\flaggs\eg.png" />
+    <Content Include="Content\flaggs\eh.png" />
+    <Content Include="Content\flaggs\england.png" />
+    <Content Include="Content\flaggs\er.png" />
+    <Content Include="Content\flaggs\es.png" />
+    <Content Include="Content\flaggs\et.png" />
+    <Content Include="Content\flaggs\europeanunion.png" />
+    <Content Include="Content\flaggs\fam.png" />
+    <Content Include="Content\flaggs\fi.png" />
+    <Content Include="Content\flaggs\fj.png" />
+    <Content Include="Content\flaggs\fk.png" />
+    <Content Include="Content\flaggs\fm.png" />
+    <Content Include="Content\flaggs\fo.png" />
+    <Content Include="Content\flaggs\fr.png" />
+    <Content Include="Content\flaggs\ga.png" />
+    <Content Include="Content\flaggs\gb.png" />
+    <Content Include="Content\flaggs\gd.png" />
+    <Content Include="Content\flaggs\ge.png" />
+    <Content Include="Content\flaggs\gf.png" />
+    <Content Include="Content\flaggs\gh.png" />
+    <Content Include="Content\flaggs\gi.png" />
+    <Content Include="Content\flaggs\gl.png" />
+    <Content Include="Content\flaggs\gm.png" />
+    <Content Include="Content\flaggs\gn.png" />
+    <Content Include="Content\flaggs\gp.png" />
+    <Content Include="Content\flaggs\gq.png" />
+    <Content Include="Content\flaggs\gr.png" />
+    <Content Include="Content\flaggs\gs.png" />
+    <Content Include="Content\flaggs\gt.png" />
+    <Content Include="Content\flaggs\gu.png" />
+    <Content Include="Content\flaggs\gw.png" />
+    <Content Include="Content\flaggs\gy.png" />
+    <Content Include="Content\flaggs\hk.png" />
+    <Content Include="Content\flaggs\hm.png" />
+    <Content Include="Content\flaggs\hn.png" />
+    <Content Include="Content\flaggs\hr.png" />
+    <Content Include="Content\flaggs\ht.png" />
+    <Content Include="Content\flaggs\hu.png" />
+    <Content Include="Content\flaggs\id.png" />
+    <Content Include="Content\flaggs\ie.png" />
+    <Content Include="Content\flaggs\il.png" />
+    <Content Include="Content\flaggs\in.png" />
+    <Content Include="Content\flaggs\io.png" />
+    <Content Include="Content\flaggs\iq.png" />
+    <Content Include="Content\flaggs\ir.png" />
+    <Content Include="Content\flaggs\is.png" />
+    <Content Include="Content\flaggs\it.png" />
+    <Content Include="Content\flaggs\jm.png" />
+    <Content Include="Content\flaggs\jo.png" />
+    <Content Include="Content\flaggs\jp.png" />
+    <Content Include="Content\flaggs\ke.png" />
+    <Content Include="Content\flaggs\kg.png" />
+    <Content Include="Content\flaggs\kh.png" />
+    <Content Include="Content\flaggs\ki.png" />
+    <Content Include="Content\flaggs\km.png" />
+    <Content Include="Content\flaggs\kn.png" />
+    <Content Include="Content\flaggs\kp.png" />
+    <Content Include="Content\flaggs\kr.png" />
+    <Content Include="Content\flaggs\kw.png" />
+    <Content Include="Content\flaggs\ky.png" />
+    <Content Include="Content\flaggs\kz.png" />
+    <Content Include="Content\flaggs\la.png" />
+    <Content Include="Content\flaggs\lb.png" />
+    <Content Include="Content\flaggs\lc.png" />
+    <Content Include="Content\flaggs\li.png" />
+    <Content Include="Content\flaggs\lk.png" />
+    <Content Include="Content\flaggs\lr.png" />
+    <Content Include="Content\flaggs\ls.png" />
+    <Content Include="Content\flaggs\lt.png" />
+    <Content Include="Content\flaggs\lu.png" />
+    <Content Include="Content\flaggs\lv.png" />
+    <Content Include="Content\flaggs\ly.png" />
+    <Content Include="Content\flaggs\ma.png" />
+    <Content Include="Content\flaggs\mc.png" />
+    <Content Include="Content\flaggs\md.png" />
+    <Content Include="Content\flaggs\me.png" />
+    <Content Include="Content\flaggs\mg.png" />
+    <Content Include="Content\flaggs\mh.png" />
+    <Content Include="Content\flaggs\mk.png" />
+    <Content Include="Content\flaggs\ml.png" />
+    <Content Include="Content\flaggs\mm.png" />
+    <Content Include="Content\flaggs\mn.png" />
+    <Content Include="Content\flaggs\mo.png" />
+    <Content Include="Content\flaggs\mp.png" />
+    <Content Include="Content\flaggs\mq.png" />
+    <Content Include="Content\flaggs\mr.png" />
+    <Content Include="Content\flaggs\ms.png" />
+    <Content Include="Content\flaggs\mt.png" />
+    <Content Include="Content\flaggs\mu.png" />
+    <Content Include="Content\flaggs\mv.png" />
+    <Content Include="Content\flaggs\mw.png" />
+    <Content Include="Content\flaggs\mx.png" />
+    <Content Include="Content\flaggs\my.png" />
+    <Content Include="Content\flaggs\mz.png" />
+    <Content Include="Content\flaggs\na.png" />
+    <Content Include="Content\flaggs\nc.png" />
+    <Content Include="Content\flaggs\ne.png" />
+    <Content Include="Content\flaggs\nf.png" />
+    <Content Include="Content\flaggs\ng.png" />
+    <Content Include="Content\flaggs\ni.png" />
+    <Content Include="Content\flaggs\nl.png" />
+    <Content Include="Content\flaggs\no.png" />
+    <Content Include="Content\flaggs\np.png" />
+    <Content Include="Content\flaggs\nr.png" />
+    <Content Include="Content\flaggs\nu.png" />
+    <Content Include="Content\flaggs\nz.png" />
+    <Content Include="Content\flaggs\om.png" />
+    <Content Include="Content\flaggs\pa.png" />
+    <Content Include="Content\flaggs\pe.png" />
+    <Content Include="Content\flaggs\pf.png" />
+    <Content Include="Content\flaggs\pg.png" />
+    <Content Include="Content\flaggs\ph.png" />
+    <Content Include="Content\flaggs\pk.png" />
+    <Content Include="Content\flaggs\pl.png" />
+    <Content Include="Content\flaggs\pm.png" />
+    <Content Include="Content\flaggs\pn.png" />
+    <Content Include="Content\flaggs\pr.png" />
+    <Content Include="Content\flaggs\ps.png" />
+    <Content Include="Content\flaggs\pt.png" />
+    <Content Include="Content\flaggs\pw.png" />
+    <Content Include="Content\flaggs\py.png" />
+    <Content Include="Content\flaggs\qa.png" />
+    <Content Include="Content\flaggs\re.png" />
+    <Content Include="Content\flaggs\ro.png" />
+    <Content Include="Content\flaggs\rs.png" />
+    <Content Include="Content\flaggs\ru.png" />
+    <Content Include="Content\flaggs\rw.png" />
+    <Content Include="Content\flaggs\sa.png" />
+    <Content Include="Content\flaggs\sb.png" />
+    <Content Include="Content\flaggs\sc.png" />
+    <Content Include="Content\flaggs\scotland.png" />
+    <Content Include="Content\flaggs\sd.png" />
+    <Content Include="Content\flaggs\se.png" />
+    <Content Include="Content\flaggs\sg.png" />
+    <Content Include="Content\flaggs\sh.png" />
+    <Content Include="Content\flaggs\si.png" />
+    <Content Include="Content\flaggs\sj.png" />
+    <Content Include="Content\flaggs\sk.png" />
+    <Content Include="Content\flaggs\sl.png" />
+    <Content Include="Content\flaggs\sm.png" />
+    <Content Include="Content\flaggs\sn.png" />
+    <Content Include="Content\flaggs\so.png" />
+    <Content Include="Content\flaggs\sr.png" />
+    <Content Include="Content\flaggs\st.png" />
+    <Content Include="Content\flaggs\sv.png" />
+    <Content Include="Content\flaggs\sy.png" />
+    <Content Include="Content\flaggs\sz.png" />
+    <Content Include="Content\flaggs\tc.png" />
+    <Content Include="Content\flaggs\td.png" />
+    <Content Include="Content\flaggs\tf.png" />
+    <Content Include="Content\flaggs\tg.png" />
+    <Content Include="Content\flaggs\th.png" />
+    <Content Include="Content\flaggs\tj.png" />
+    <Content Include="Content\flaggs\tk.png" />
+    <Content Include="Content\flaggs\tl.png" />
+    <Content Include="Content\flaggs\tm.png" />
+    <Content Include="Content\flaggs\tn.png" />
+    <Content Include="Content\flaggs\to.png" />
+    <Content Include="Content\flaggs\tr.png" />
+    <Content Include="Content\flaggs\tt.png" />
+    <Content Include="Content\flaggs\tv.png" />
+    <Content Include="Content\flaggs\tw.png" />
+    <Content Include="Content\flaggs\tz.png" />
+    <Content Include="Content\flaggs\ua.png" />
+    <Content Include="Content\flaggs\ug.png" />
+    <Content Include="Content\flaggs\um.png" />
+    <Content Include="Content\flaggs\en-US.png" />
+    <Content Include="Content\flaggs\uy.png" />
+    <Content Include="Content\flaggs\uz.png" />
+    <Content Include="Content\flaggs\va.png" />
+    <Content Include="Content\flaggs\vc.png" />
+    <Content Include="Content\flaggs\ve.png" />
+    <Content Include="Content\flaggs\vg.png" />
+    <Content Include="Content\flaggs\vi.png" />
+    <Content Include="Content\flaggs\vn.png" />
+    <Content Include="Content\flaggs\vu.png" />
+    <Content Include="Content\flaggs\wales.png" />
+    <Content Include="Content\flaggs\wf.png" />
+    <Content Include="Content\flaggs\ws.png" />
+    <Content Include="Content\flaggs\ye.png" />
+    <Content Include="Content\flaggs\yt.png" />
+    <Content Include="Content\flaggs\za.png" />
+    <Content Include="Content\flaggs\zm.png" />
+    <Content Include="Content\flaggs\zw.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fuelux.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
+    <Content Include="pager\first.png" />
+    <Content Include="pager\last.png" />
+    <Content Include="pager\next.png" />
+    <Content Include="pager\pager.css" />
+    <Content Include="pager\prev.png" />
+    <Content Include="App\services\knockout.bindings.js" />
+    <Content Include="Scripts\almond-custom.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\jquery.easy-pie-chart.css" />
+    <Content Include="Scripts\jquery.tablesorter.pager.js" />
+    <Content Include="Scripts\jquery.tablesorter.widgets.js" />
+    <Content Include="sorter\asc.gif" />
+    <Content Include="sorter\bg.gif" />
+    <Content Include="sorter\desc.gif" />
+    <Content Include="sorter\style.css" />
+    <Content Include="fonts\fuelux.eot" />
+    <Content Include="fonts\fuelux.ttf" />
+    <Content Include="fonts\fuelux.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="package.json" />
+    <Content Include="bower.json" />
+    <Content Include="Content\bootstrap-theme-white-plum-energieNetz\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme-white-plum-energieNetz\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap-theme-white-plum-energieNetz\dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\EnergieNetz.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Scripts\breeze.debug.js" />
+    <Content Include="Scripts\breeze.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml">
+      <BrowseToURL>~</BrowseToURL>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BreezeWebApiConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DurandalAuthController.cs" />
+    <Compile Include="Controllers\ExcelExportController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MetadataController.cs" />
+    <Compile Include="Controllers\UtilsController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Filters\RequireHttpsAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ApplicationRoleManager.cs" />
+    <Compile Include="Helpers\ApplicationUserManager.cs" />
+    <Compile Include="Helpers\BreezeValidator.cs" />
+    <Compile Include="Helpers\ExcelExportGenerator.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\FinancialCalculation.cs" />
+    <Compile Include="Helpers\IApplicationManager.cs" />
+    <Compile Include="Helpers\IExcelExportGenerator.cs" />
+    <Compile Include="Helpers\PerformanceFigure.cs" />
+    <Compile Include="Helpers\EmailService.cs" />
+    <Compile Include="Helpers\ViewRenderer.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Results\ExcelResult.cs" />
+    <Compile Include="Results\SitemapResult.cs" />
+    <Compile Include="SEO\ISnapshot.cs" />
+    <Compile Include="SEO\Snapshot.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOauthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="SEO\ISitemapGenerator.cs" />
+    <Compile Include="SEO\ISitemapItem.cs" />
+    <Compile Include="SEO\SitemapChangeFrequency.cs" />
+    <Compile Include="SEO\SitemapGenerator.cs" />
+    <Compile Include="SEO\SitemapItem.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Mailer\NewAccount.cshtml" />
+    <Content Include="Views\Mailer\PasswordReset.cshtml" />
+    <Content Include="Views\Mailer\OneColumn_Layout.cshtml">
+      <BrowseToURL>~/Views/Mailer/OneColumn_Layout.cshtml</BrowseToURL>
+    </Content>
+    <Content Include="Views\Mailer\ContactMessage.cshtml" />
+    <Content Include="Views\Mailer\InvitationMessage.cshtml" />
+    <Content Include="Views\Mailer\AccountActivated.cshtml" />
+    <Content Include="Views\Mailer\ConfirmedAccount.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
+    <Folder Include="Views\Sitemap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnergyNetwork.Data\EnergyNetwork.Data.csproj">
+      <Project>{11826A10-6277-40A9-83FD-CE0398077715}</Project>
+      <Name>EnergyNetwork.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnergyNetwork.Domain\EnergyNetwork.Domain.csproj">
+      <Project>{0A4BF6AD-F505-4C97-89EA-EE0DB3BF7031}</Project>
+      <Name>EnergyNetwork.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>22657</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:22657/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties package_1json__JSONSchema="http://json.schemastore.org/package" bower_1json__JSONSchema="http://json.schemastore.org/bower" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

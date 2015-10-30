@@ -1,0 +1,46 @@
+﻿<div class="panel panel-default" data-bind="attr: { id: panelId }" >
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + panelId, href: '#' + collapseId }">
+                <span data-bind="text: language.getValue('surveys')"></span>
+            </a>
+        </h3>
+    </div>
+    <div data-bind="attr: { id: collapseId }" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                  <!-- ko foreach: model -->
+                  <!-- ko if: $data[0].date().getFullYear() >= $parent.network().startDate().getFullYear() - 1 && $data[0].date().getFullYear() <= $parent.network().endDate().getFullYear() -->
+                    <li role="presentation"><a role="tab" data-toggle="tab" data-bind="text: $data[0].title, attr: { href: '#' + $data[0].surveyId(), 'aria-controls': $data[0].surveyId }"></a></li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </ul>
+                <div class="tab-content">
+                  <!-- ko foreach: model -->
+                  <!-- ko if: $data[0].date().getFullYear() >= $parent.network().startDate().getFullYear() - 1 && $data[0].date().getFullYear() <= $parent.network().endDate().getFullYear() -->
+                    <div role="tabpanel" class="tab-pane fade" data-bind="attr: { id: $data[0].surveyId }">
+                        <table class="table table-striped mart1">
+                            <tbody data-bind="foreach: $data">
+                                <tr>
+                                    <td style="font-size: 12px; width: auto; padding-left: 15px;" data-bind="textIfExists: $data.networkCompany().company().name"></td>
+                                    <td>
+                                        <span class="glyphicon glyphicon-search tools pull-right hidden-xs" style="margin-left: 5px;" data-bind="command: $parents[1].openSurveyCommand"></span>
+                                      <!-- ko if: $data.fulfilled -->
+                                      <span style="color: green" class="glyphicon glyphicon-ok-sign pull-right" data-bind="tooltip: { title: language.getValue('surveyFilledOut'), placement: 'left' }"></span>
+                                      <!-- /ko -->
+                                      <!-- ko ifnot: $data.fulfilled -->
+                                      <span style="color: red" class="glyphicon glyphicon-remove-sign pull-right" data-bind="tooltip: { title: language.getValue('surveyNotFilledOut'), placement: 'left' }"></span>
+                                      <!-- /ko -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>            
+</div>

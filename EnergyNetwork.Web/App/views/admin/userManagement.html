@@ -1,0 +1,63 @@
+﻿<div id="userpanel">
+    <div class="st-offcanvas">
+        <div class="st-offcanvas-menu submenu" style="width: 275px">
+            <div class="input-group">
+                <input type="search" class="form-control" data-bind="value: searchText, valueUpdate: 'afterkeydown', attr: { 'placeholder': language.getValue('search') }">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+          <div class="panel panel-default mart5" style="padding-bottom: 5px;">
+            <div class="panel-heading">
+              <span data-bind="text: language.getValue('selectUser')"></span>
+              <div class="pull-right">
+                <select class="multiselect" data-bind="options: filterOptions, selectedOptions: selectedFilters" multiple="multiple"></select>
+              </div>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+              <li id="allUsers" class="active" data-bind="with: usersViewModel, css: { 'active': selectedRole() == 'all' }">
+                <a href="#" data-bind="text: language.getValue('all'), click: function () { $parent.changeSelectedRole('all') }"></a>
+              </li>
+              <!-- ko foreach: usersGroupedByRoles -->
+              <li style="overflow: hidden" data-bind="css: {'active': $parent.selectedRole() == $data }">
+                <a href="#" data-bind="click: function () { $parent.changeSelectedRole($data, $parent) }">
+                  <span data-bind="text: language.getValue(name)"></span>
+                  <span class="badge pull-right" data-bind="text: filteredUsers() ? filteredUsers().length : 0, tooltip: { title: language.getValue(name), placement: 'left' }"></span>
+                </a>
+                <ul class="nav nav-pills nav-stacked" style="height: auto; padding: 0 0 0 20px" data-bind="attr: { id: roleId } , fadeVisible: $parent.canShowUsers($data) ,template: { foreach: filteredUsers,
+                            beforeRemove: $parent.hideUser,
+                            afterAdd: $parent.showUser }">
+
+                  <li style="margin-top: 2px;" data-bind="css: { 'active': $parents[1].selectedUser != '' ? $parents[1].selectedUser().model == $data : false }">
+                    <a href="#" data-bind="click: function () { $parents[1].changeSelectedUser($data, $parent)}, attr: { style: 'font-size: 12px;', id: id }, tooltip: { title: firstName + ' ' + lastName, placement: 'top', delay: { show: 500}}">
+                      <div data-bind="text: userName"></div>
+                      <span class="tools" style="float: left; font-size: 10px" data-bind="trimText: $parents[1].getCompanyName(companyId), trimTextLength: 30"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!-- /ko -->
+            </ul>
+          </div>
+          <div>
+            <button type="button" class="btn btn-default btn-add" data-bind="click: openUserAddDialog">
+              <span class="glyphicon glyphicon-plus"></span>
+              <span data-bind="text: language.getValue('add')"></span>
+            </button>
+          </div>
+        </div>
+        <div class="st-offcanvas-main">
+            <div class="row well submenubar">
+                <a href="#" class="showmenubutton"><i class="fa fa-th"></i></a>
+            </div>
+            <div class="mart2">
+                <!-- ko  if : selectedUser -->
+                <div data-bind="compose: {model:selectedUser}"></div>
+                <!-- /ko -->
+                <!-- ko  ifnot : selectedUser -->
+                <div data-bind="compose: { model: usersViewModel}"></div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿<div data-bind="with: model" >
+    <div class="row">
+        
+    </div>
+    <table id="investmentPlanTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th data-bind="text: language.getValue('name')"></th>
+                <th data-bind="text: language.getValue('lifetime') + ' ' + language.getValue('inYears')"></th>
+                <th data-bind="text: language.getValue('imputedInterestRate') + ' (%)'"></th>
+                <th data-bind="text: language.getValue('investmentSum') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('recoveryValueToday') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('recoveryValueAfterLifetime') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('energyCostsAnnual') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('energyCostsChangePA') + ' (%)'"></th>
+                <th data-bind="text: language.getValue('otherCostsPA') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('otherCostsChangePA') + ' (%)'"></th>
+                <th data-bind="text: language.getValue('otherRevenuePA') + ' (€)'"></th>
+                <th data-bind="text: language.getValue('otherRevenueChangePA') + ' (%)'"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="pointable warning" style="cursor: default">
+                <td data-bind="text: investmentName"></td>
+                <td data-bind="text: lifetime"></td>
+                <td data-bind="percentage: imputedInterestRate, numberFormat: 'n2'"></td>
+                <td data-bind="text: investmentSum"></td>
+                <td data-bind="text: recoveryValueToday"></td>
+                <td data-bind="text: recoveryValueAfterLifetime"></td>
+                <td data-bind="text: energyCostsAnnual"></td>
+                <td data-bind="percentage: energyCostsChangePA, numberFormat: 'n2'"></td>
+                <td data-bind="text: otherCostsPA"></td>
+                <td data-bind="percentage: otherCostsChangePA, numberFormat: 'n2'"></td>
+                <td data-bind="text: otherRevenuePA"></td>
+                <td data-bind="percentage: otherRevenueChangePA, numberFormat: 'n2'"></td>
+            </tr>
+            <!-- ko foreach: comparisons -->
+          <tr data-bind="click: $parents[1].goto , tooltip: { title: language.getValue('chooseComparison'), placement: 'top', delay: { show: 500 } }" class="pointable">
+            <td data-bind="text: comparisonName"></td>
+            <td data-bind="text: lifetime"></td>
+            <td data-bind="percentage: $parent.imputedInterestRate, numberFormat: 'n2'"></td>
+            <td data-bind="text: investmentSum"></td>
+            <td data-bind="text: recoveryValueToday"></td>
+            <td data-bind="text: recoveryValueAfterLifetime"></td>
+            <td data-bind="text: energyCostsAnnual"></td>
+            <td data-bind="percentage: energyCostsChangePA, numberFormat: 'n2'"></td>
+            <td data-bind="text: otherCostsPA"></td>
+            <td data-bind="percentage: $parent.otherCostsChangePA, numberFormat: 'n2'"></td>
+            <td data-bind="text: otherRevenuePA"></td>
+            <td data-bind="percentage: $parent.otherRevenueChangePA, numberFormat: 'n2'"></td>
+          </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+</div>

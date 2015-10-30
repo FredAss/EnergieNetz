@@ -1,0 +1,11 @@
+﻿<h4 style="margin-bottom: 20px;" data-bind="text: language.getValue('importantTopics')"></h4>
+<div style="margin-bottom: 20px;">
+    <form class="form-horizontal">
+        <div data-bind="foreach: importantTopicViewModels">
+            <div style="margin-bottom: 25px; margin-left: 4px;" class="row mart2" data-bind="compose: $data"></div>
+        </div>
+    </form>
+</div>
+<span data-bind="if: !survey.fulfilled()" style="font-size: 150%">
+    <span class="glyphicon glyphicon-plus tools" data-bind="command: addImportantTopicCommand, tooltip: { title: language.getValue('addTopic'), placement: 'right' }"></span>
+</span>

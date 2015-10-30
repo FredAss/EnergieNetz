@@ -1,0 +1,51 @@
+﻿<div role="tabpanel" data-bind="attr: { id: tabpanelId }">
+    <ul class="nav nav-tabs" role="tablist">
+        <!-- ko foreach: model -->
+        <li role="presentation"><a role="tab" data-toggle="tab" data-bind="text: $data.relatedYear, attr: { href: '#' + $data.relatedYear+'-'+$parent.id, 'aria-controls': $data.relatedYear+'-'+$parent.id }"></a></li>
+        <!-- /ko -->
+    </ul>
+    <div class="tab-content">
+        <!-- ko foreach: model -->
+        <div role="tabpanel" class="tab-pane fade" data-bind="attr: { id: $data.relatedYear+'-'+$parent.id }">
+            <table class="table table-striped mart1">
+                <tbody data-bind="foreach: rankingByTotalRevenue">
+                    <tr data-bind="css: {'success': isSelectedCompany}">
+                        <td><span data-bind="text: ($index() + 1) , style: {'font-weight': isSelectedCompany ? 'bold': ''}"></span></td>
+                        <td style="font-size: 12px; width: auto" data-bind="text: companyName, style: {'font-weight': isSelectedCompany ? 'bold': ''}"></td>
+                        <!-- ko if: hasPermission -->
+                        <td style="font-size: 11px" class="text-right">
+                            <span data-bind="valueNumber: totalEnergyConsumption/1000, numberFormat: 'n0'"></span>
+                            <span>&nbsp;MWh /</span>
+                            <span data-bind="valueNumber: totalRevenue/1000, numberFormat: 'n0'"></span>
+                            <abbr title="Tausend">T€</abbr>
+                            <span style="font-size: 12px"> = </span>
+                        </td>
+                        <!-- /ko -->
+                        <!-- ko if: !hasPermission -->
+                        <td style="font-size: 11px" class="text-right">
+                            <span>?</span>
+                            <span>&nbsp;MWh /</span>
+                            <span>?</span>
+                            <abbr title="Tausend">T€</abbr>
+                            <span style="font-size: 12px"> = </span>
+                        </td>
+                        <!-- /ko -->
+                        <td style="font-size: 11px" class="text-left">
+                            <!-- ko if: $parent.adminMode -->
+                            <span style="font-size: 12px; font-weight: bold" data-bind="visible:energyConsumptionPerTotalRevenue != 'Infinity', valueNumber: energyConsumptionPerTotalRevenue, numberFormat: 'n3'"></span>
+                            <!-- /ko -->
+                            <!-- ko if: !$parent.adminMode -->
+                            <span style="font-size: 12px;" data-bind="visible:energyConsumptionPerTotalRevenue != 'Infinity', valueNumber: energyConsumptionPerTotalRevenue, numberFormat: 'n3', style: {'font-weight': isSelectedCompany ? 'bold': ''}"></span>
+                            
+                            <!-- /ko -->
+                           
+                            <span data-bind="visible:energyConsumptionPerTotalRevenue != 'Infinity'">&nbsp;kWh/€</span>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

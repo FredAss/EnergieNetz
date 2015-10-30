@@ -1,0 +1,45 @@
+﻿<div class="panel panel-default" data-bind="attr: { id: panelId }" >
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + panelId, href: '#' + collapseId }">
+                <span data-bind="text: language.getValue('measures')"></span>
+            </a>
+            <a href="#" class="hidden-xs" data-bind="click: showDetails" style="float: right; margin: 0 5px 0 5px"><span class="glyphicon glyphicon-search tools"></span></a>
+        </h3>
+    </div>
+    <div data-bind="attr: { id: collapseId }" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div class="row" style="margin: 0px -15px 0px -15px">
+                <div class="col-md-12">
+                    <div class="row" style="margin: 0px -15px 0px -15px">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row" style="margin: 0px -15px 0px -15px">
+                                <div class="col-md-12">
+                                    <span data-bind="text: language.getValue('numberOfMeasures') + ':'"></span>
+                                    <span data-bind="text: measuresDetailExtractor.totalMeasures" style="font-size: 28px"></span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0px -15px 0px -15px">
+                                <div class="col-md-12">
+                                    <span data-bind="text: '- ' + language.getValue('inProgress') + ':'"></span>
+                                    <span data-bind="text: measuresDetailExtractor.inProgressMeasures" style="font-size: 28px"></span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0px -15px 0px -15px">
+                                <div class="col-md-12">
+                                    <span data-bind="text: '- ' + language.getValue('finished') + ':'"></span>
+                                    <span data-bind="text: measuresDetailExtractor.completedMeasures" style="font-size: 28px"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden-xs col-md-6 col-sm-6">
+                            <div class="chart" data-bind="attr: { 'data-percent': (measuresDetailExtractor.savedEnergyByMeasures() * 100) }, tooltip: { title: language.getValue('savedEnergyInPercent_tooltip'), placement: 'right' }" style="vertical-align: middle;">
+                                <span class="percent" data-bind="valueNumber: measuresDetailExtractor.savedEnergyByMeasures(), numberFormat: 'p1'"></span>
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

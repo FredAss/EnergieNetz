@@ -1,0 +1,51 @@
+﻿<div id="dashboard">
+    <div class="st-offcanvas">
+        <div class="st-offcanvas-menu" style="width: 275px">
+            <div class="panel panel-default" style="padding-bottom: 5px;">
+                <div class="panel-heading">
+                    <span data-bind="text: language.getValue('selectNetwork')"></span>
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <!-- ko foreach: networkCompanies -->
+                    <li style="overflow: hidden" data-bind="css: {'active': $parent.selectedItem() == $data }">
+                        <a href="#" data-bind="click: function (data) { $parent.changeSelectedNetwork($data) }, clickBubble: false">
+                            <span data-bind="text: network().name"></span>
+                        </a>
+                        <ul class="nav nav-pills nav-stacked"
+                            style="height: 0px; padding: 0px 0px 0px 20px"
+                            data-bind="attr: { id: networkId }"></ul>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+        <div class="st-offcanvas-main">
+            <div class="row well submenubar">
+                <a href="#" class="showmenubutton"><i class="fa fa-th"></i></a>
+                <div class="btn-group" data-bind="if: selectedItem">
+                    <!-- ko with: submenu -->
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span data-bind="text: buttonLabel"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" data-bind="foreach: commands">
+                        <li>
+                            <a href="#" data-bind="click: command">
+                                <span data-bind="attr: {'class': icon}"></span>
+                                <span data-bind="text: language.getValue(label)"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /ko -->
+                </div>
+               
+                <a href="#" class="showadditionalbutton pull-right" data-bind="text: language.getValue('lastChanges')"></a>
+            </div>
+            <div class="mart2">
+                <!--ko router: {cacheViews:true }--><!--/ko-->
+            </div>
+            <hr class="mart2" />
+        </div>
+        <div class="st-offcanvas-additional changeLog" style="width: 275px" data-bind="compose: changeLogViewModel"></div>
+    </div>
+</div>

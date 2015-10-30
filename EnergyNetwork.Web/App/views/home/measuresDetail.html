@@ -1,0 +1,62 @@
+﻿<div class="modal-content" style="height: 90%; padding: 10px; position: fixed; width: 90%;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="click: close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: language.getValue('measures')"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-10 col-md-5">
+                <span class="input-group">
+                    <input type="search" class="form-control" data-bind="value: search, valueUpdate: 'afterkeydown', event: { 'change': searchMeasures, 'keyup': searchMeasures }, attr: { placeholder: language.getValue('searchMeasures_placeholder') }" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" data-bind="click: searchMeasures" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </span>
+            </div>
+            <div class="col-xs-2 col-md-7" style="font-size: 20px">
+                <a href="#" data-bind="visible: tableData().length > 0 || filteredMeasures().length > 0, click: function() { exportMeasures(parentObj); }"><span class="pull-right glyphicon glyphicon-download" data-bind="tooltip: { title: language.getValue('exportData'), placement: 'left', delay: { show: 500 } }"></span></a>
+                <a href="#" data-bind="visible: type === 'NetworkCompany', command: openMeasureAddDialog"><span class="pull-right glyphicon glyphicon-plus" style="margin-right: 10px;" data-bind="tooltip: { title: language.getValue('addMeasure'), placement: 'left', delay: { show: 500 } }"></span></a>
+            </div>
+        </div>
+        <div class="row mart1">
+            <div class="col-md-12" style="overflow-y: auto">
+                <table id="measuresTable" class="tablesorter">
+                    <thead>
+                        <tr>
+                          <th data-bind="text: language.getValue('name')"></th>
+                          <th data-bind="text: language.getValue('description')"></th>
+                          <!-- ko if: type == "Network" -->
+                          <th data-bind="text: language.getValue('company')"></th>
+                          <!-- /ko -->
+                          <th data-bind="text: language.getValue('possibleSavings') + ' (kWh)'"></th>
+                          <th data-bind="text: language.getValue('status')"></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: filteredMeasures">
+                      <tr data-bind="command: $parent.openMeasureEditDialog, tooltip: { title: language.getValue('editMeasure'), placement: 'top', delay: { show: 500 } }" class="pointable">
+                        <td data-bind="text: title"></td>
+                        <td data-bind="text: description"></td>
+                        <!-- ko if: $parent.type == "Network" -->
+                        <td data-bind="textIfExists: networkCompany().company().name()"></td>
+                        <!-- /ko -->
+                        <td>
+                          <strong>
+                            <span data-bind="valueNumber: $parent.calculateSaving($data), numberFormat: 'n0'"></span>
+                          </strong>
+                          <small>
+                            <span>(</span><span data-bind="valueNumber: possibleSavingInPercent, numberFormat: 'p1'"></span><span>)</span>
+                          </small>
+                        </td>
+                        <td>
+                          <span data-bind="label: $data.state"></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bind="click: close, text: language.getValue('close')" data-dismiss="modal"></button>
+    </div>
+</div>

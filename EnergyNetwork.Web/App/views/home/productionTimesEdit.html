@@ -1,0 +1,21 @@
+﻿<h4 data-bind="text: language.getValue('productionTimes')"></h4>
+<div class="row mart1 col-md-10">
+    <table class="table">
+        <thead>
+            <tr>
+                <th data-bind="text: language.getValue('dayOfTheWeek')"></th>
+                <th data-bind="text: language.getValue('workingShifts') + ' ' + language.getValue('perDay')"></th>
+                <th data-bind="text: language.getValue('hours') + ' ' + language.getValue('perShift') + ' (h)'"></th>
+                <th data-bind="text: language.getValue('productionTime') + ' ' + language.getValue('perDay') + ' (h)'"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <!-- ko foreach: productionTimeViewModels -->
+        <tbody data-bind="compose: $data">
+        </tbody>
+        <!-- /ko -->
+    </table>
+    <span data-bind="if: !survey.fulfilled()" style="font-size: 150%">
+        <span class="glyphicon glyphicon-plus tools" data-bind="command: addProductionTimeCommand, tooltip: { title: language.getValue('addProductionTime'), placement: 'right' }"></span>
+    </span>
+</div>

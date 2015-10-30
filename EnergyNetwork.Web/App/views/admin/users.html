@@ -1,0 +1,33 @@
+﻿<div class="row">
+    <div class="col-md-12">
+      <!-- ko foreach: usersGroupedByRole -->
+        <!-- ko if: filteredUsers().length > 0 -->
+          <h3 class="mart3" style="margin-bottom: 10px;" data-bind="text: language.getValue(name)"></h3>
+          <!-- ko  foreach : filteredUsers -->
+          <button type="button" class="btn btn-primary btn-users" data-bind="click: $parents[1].routeToUser">
+            <p>
+              <strong><span data-bind="text: userName"></span></strong>
+              <small><span data-bind="text: firstName + ' ' + lastName"></span>
+              <span data-bind="textIfExists: $parents[1].getCompanyName(companyId)"></span></small>
+            </p>
+            <i class="activeUser fa fa-check" data-bind="visible: activated, tooltip: { title: language.getValue('activated') , placement: 'left' }"></i>
+          </button>
+          <!-- /ko -->
+        <!-- /ko -->
+      <!-- /ko -->
+      <h3 class="mart3" style="margin-bottom: 10px;" data-bind="text: language.getValue('openInvitations')"></h3>
+      <!-- ko foreach: openInvitations -->
+      <div class="btn btn-primary btn-openInvitations">
+        <p>
+          <strong>
+            <span data-bind="tooltip:{title: email, placement: 'top', delay: { show: 500}}, trimText: email, trimTextLength: 20"></span>
+          </strong>
+          <small>
+            <span data-bind="text: language.getValue('invitedFrom') + ': ' + invitedFrom()"></span>
+          </small>
+        </p>
+        <i class="glyphicon glyphicon-trash" data-bind="tooltip: { title: language.getValue('delete') , placement: 'left' }, command: $parent.deleteInvitation"></i>
+      </div>
+      <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿<div id="investmentPlan">
+    <div class="st-offcanvas">
+        <div class="st-offcanvas-menu submenu" style="width: 275px">
+            <div class="input-group">
+                <input type="search" class="form-control" data-bind="value: searchText, valueUpdate: 'afterkeydown', attr: { placeholder: language.getValue('searchInvestment_placeholder') }">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" data-bind="" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <div class="panel panel-default mart5" style="padding-bottom: 5px;">
+                <div class="panel-heading">
+                    <span data-bind="text: language.getValue('chooseInvestment')"></span>
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="allInvestmentPlans" class="active" data-bind="with: investmentPlansViewModel, css: { 'active': selectedItem() === null }">
+                        <a href="#" data-bind="text: language.getValue('all'), click: function () { $parent.changeSelectedInvestmentPlan('all') }"></a>
+                    </li>
+                    <!-- ko template: {foreach: filteredInvestmentPlans, beforeRemove: hideElement, afterAdd: showElement} -->
+                    <li style="overflow: hidden" data-bind="css: {'active': $parent.selectedInvestmentPlan() == $data }">
+                        <a href="#" data-bind="click: function(data) {$parent.changeSelectedInvestmentPlan($data)}">
+                            <div class="row">
+                                <div class="col-xs-12" style="padding: 0 0 0 0">
+                                    <span data-bind="text: investmentName"></span>
+                                    <span class="badge pull-right" data-bind="text: filteredComparisons().length, tooltip: { title: language.getValue('investmentNameBubble_tooltip'), placement: 'left' }"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="padding: 0 0 0 0">
+                                    <span class="tools" style="float: left; font-size: 10px" data-bind="trimText: company() ? company().name() : '', trimTextLength: 30"></span>
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="nav nav-pills nav-stacked"
+                            style="height: auto; padding: 0 0 0 20px"
+                            data-bind="fadeVisible: $parent.canShowComparisons($data),
+                                       template: {
+                                                    foreach: filteredComparisons,
+                                                    beforeRemove: $parent.hideElement,
+                                                    afterAdd: $parent.showElement
+                                                 }">
+                            <li class="navitem" data-bind="css: {'active': $parents[1].selectedComparison() == $data }">
+                                <a href="#" data-bind="click: function (data) { $parents[1].changeSelectedComparison($data) }">
+                                    <span data-bind="text: comparisonName"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+            <div>
+                <button type="button" class="btn btn-default btn-add" data-bind="command: openInvestmentPlanAddDialog">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span data-bind="text: language.getValue('add')"></span>
+                </button>
+            </div>
+        </div>
+        <div class="st-offcanvas-main">
+            <div class="row well submenubar">
+                <a href="#" class="showmenubutton"><i class="fa fa-th"></i></a>
+                <div class="btn-group" data-bind="if: selectedItem">
+                    <!-- ko with: submenu -->
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span data-bind="text: buttonLabel"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" data-bind="foreach: commands">
+                        <li><a href="#" data-bind="click: command">
+                                <span data-bind="attr: {'class': icon}"></span>
+                                <span data-bind="text: language.getValue(label)"></span>
+                            </a></li>
+                    </ul>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div class="mart2">
+                <!--ko router: {cacheViews:true }--><!--/ko-->
+            </div>
+            <hr class="mart2" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+﻿<div style="padding-top: 15px" ></div>
+
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-sm-8">
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="row" style="font-size: 44px">
+                <div class="col-sm-11 col-xs-8" style="padding-right: 0px; text-align: right;" data-bind="with: financialCalculation">
+                    <span data-bind="text: lifetime"></span>
+                </div>
+                <div class="col-sm-1 col-xs-4" style="padding: 0 0 0 0">
+                    <span style="font-size: 20px; padding-left: 0px; text-align: left; vertical-align: bottom;">a</span>
+                </div>
+            </div>
+            <div class="row" style="font-size: 44px">
+                <div class="col-sm-8 col-xs-4" style="font-size: 38px; text-align: right;">
+                    <span>+/-</span>
+                </div>
+                <div class="col-sm-3 col-xs-4" style="padding-right: 0px; text-align: right;">
+                    <span data-bind="text: selectedValue"></span>
+                </div>
+                <div class="col-sm-1 col-xs-4" style="padding: 0 0 0 0">
+                    <span style="font-size: 20px; padding-left: 0px; text-align: left; vertical-align: bottom;">a</span>
+                </div>
+            </div>
+            <div class="row">
+                <div style="padding-top: 15px"></div>
+                <div class="col-xs-12" style="padding-right: 0px; text-align: right;">
+                    <input type="text" class="slider form-control" style="width: 100%" data-bind="attr: {id: inputSlider},sliderValue: {value: selectedValue, min:0, max: 15, step: 5, tooltip: 'hide'}" />
+                </div>
+            </div>
+            <div style="padding-top: 30px" class="visible-xs"></div>
+        </div>
+    </div>
+</div>
+
+<div style="padding-top: 50px" class="hidden-xs"></div>
+<div style="padding-top: 15px" class="visible-xs"></div>
+
+<!--<div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12" style="text-align: center">
+                <span>+/- </span>
+                <span data-bind="text: selectedValue"></span>
+                <span> a</span>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text" class="slider form-control" data-bind="sliderValue: {value: selectedValue, min:0, max: 15, step: 1, tooltip: 'show'}" />
+        </div>
+    </div>-->
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : kapitalWertNutzungsdauerPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + kapitalWertNutzungsdauerPanelId, href: '#' + kapitalWertNutzungsdauerCollapseId }, text: language.getValue('capitalValue') + ': ' + language.getValue('variationInOperatingLife')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : kapitalWertNutzungsdauerCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: kapitalWertNutzungsdauerChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId1" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('lifetime') + ' (a)'"></th>
+                                    <th data-bind="text: language.getValue('capitalValue') + ' (€)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="valueNumber: value2, numberFormat: 'n0'"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : interneVerzinsungNutzungsdauerPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + interneVerzinsungNutzungsdauerPanelId, href: '#' + interneVerzinsungNutzungsdauerCollapseId }, text: language.getValue('internalInterestRate') + ': ' + language.getValue('variationInOperatingLife')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : interneVerzinsungNutzungsdauerCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: interneVerzinsungNutzungsdauerChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId2" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('lifetime') + ' (a)'"></th>
+                                    <th data-bind="text: language.getValue('internalInterestRate') + ' (%)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="percentage: value3, numberFormat: 'n1'"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

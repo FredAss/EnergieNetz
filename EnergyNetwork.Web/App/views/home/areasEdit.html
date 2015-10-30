@@ -1,0 +1,32 @@
+﻿<h4 data-bind="text: language.getValue('areas')"></h4>
+<div class="row mart1 col-md-10">
+    <table class="table">
+        <thead>
+            <tr>
+                <th data-bind="text: language.getValue('areaType')"></th>
+                <th data-bind="text: language.getValue('areaSize') + ' (m²)'"></th>
+                <th data-bind="text: language.getValue('areaHeated') + ' (%)'"></th>
+                <th data-bind="text: language.getValue('areaConditioned') + ' (%)'"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <!-- ko foreach: areaViewModels -->
+      <tbody data-bind="compose: $data">
+      </tbody>
+      <!-- /ko -->
+      <tr data-bind="if: !survey.fulfilled()" style="font-size: 150%">
+        <td rowspan="4">
+          <span class="glyphicon glyphicon-plus tools" data-bind="command: addAreaCommand, tooltip: { title: language.getValue('addArea'), placement: 'right' }"></span>
+        </td>
+      </tr>
+        <tfoot>
+            <tr>
+                <td data-bind="text: language.getValue('totalAreaSize')"></td>
+                <td data-bind="text: totalSize()"></td>
+                <td data-bind="text: totalHeatedFraction"></td>
+                <td data-bind="text: totalConditionedFraction"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>

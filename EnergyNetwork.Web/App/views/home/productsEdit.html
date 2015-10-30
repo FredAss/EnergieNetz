@@ -1,0 +1,22 @@
+﻿<h4 data-bind="text: language.getValue('manufacturedMajorProducts')"></h4>
+<div class="row mart1 col-md-10">
+    <table class="table">
+        <thead>
+            <tr>
+                <th data-bind="text: language.getValue('productType')"></th>
+                <th data-bind="text: language.getValue('quantityOfGoodsManufactured')"></th>
+                <th data-bind="text: language.getValue('unit')"></th>
+                <th data-bind="text: language.getValue('percentageOfSales') + ' (%)'"></th>
+                <th data-bind="text: language.getValue('percentageOfEnergyConsumption') + ' (%)'"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <!-- ko foreach: productViewModels -->
+        <tbody data-bind="compose: $data">
+        </tbody>
+        <!-- /ko -->
+    </table>
+    <span data-bind="if: !survey.fulfilled()" style="font-size: 150%">
+        <span class="glyphicon glyphicon-plus tools" data-bind="command: addProductCommand, tooltip: { title: language.getValue('addProduct'), placement: 'right' }"></span>
+    </span>
+</div>

@@ -1,0 +1,101 @@
+﻿<div data-bind="with: model" class="row">
+    <div class="col-md-12">
+        <div class="row mart2">
+            <div class="col-md-6" style="padding: 0px">
+                <div class="row" style="margin-left: 0px; margin-right: 0px">
+                    <div class="col-md-12">
+                        <div class="panel panel-default" id="infoPanel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#infoPanel" href="#infoCollapse">
+                                        <span data-bind="text: language.getValue('contactInformation')"></span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="infoCollapse" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="row" style="font-size: 12px; margin: 0px -15px 0px -15px; max-height: 350px;">
+                                      <div class="col-xs-12 col-md-6">
+                                        <address>
+                                          <span data-bind="textIfExists: company().address().street"></span>
+                                          <br />
+                                          <span data-bind="textIfExists: company().address().postalCode"></span>
+                                          <span data-bind="textIfExists: company().address().city"></span>
+                                          <br />
+                                          <a href="#" target="_blank" data-bind="attr: { href: company() != null ? company().address().website() : '', title: company() != null ? company().address().website() : '' }">
+                                            <span data-bind="textIfExists: company().address().website()"></span>
+                                          </a>
+                                          <br>
+                                        </address>
+                                        <a class="mart2 hidden-xs" href="#" style="color:black;" data-bind="click: $parent.showMap">
+                                          <span data-bind="text: language.getValue('map')"></span>
+                                          <span class="glyphicon glyphicon-globe mart2" style="font-size: 20px; cursor: pointer;" data-bind="tooltip: { title: language.getValue('map'), placement: 'right' }"></span>
+                                        </a>
+                                      </div>
+                                      <div class=" visible-xs col-xs-12" style="border-top: 1px solid #DDDDDD; margin: 5px 0;"></div>
+                                      <div class="col-xs-12 col-md-6" style="border-left: 1px solid #DDDDDD; max-height: inherit; overflow-y: auto;">
+                                        <ul class="nav nav-pills nav-stacked">
+                                                <!-- ko if: company() != null -->
+                                                <!-- ko  foreach : company().employees -->
+                                                <li>
+                                                    <hr style="margin-bottom: 5px" data-bind="visible: $index() > 0" />
+                                                    <address>
+                                                        <span class="fa fa-user" style="margin-right: 3px;"></span>
+                                                        <strong data-bind="text: lastName() + ' ' + firstName() "></strong><br>
+
+                                                        <a href="#" data-bind="attr: { href: 'mailto:' + email() }" target="_self">
+                                                            <span class="glyphicon glyphicon-envelope"></span>
+                                                            <span data-bind="text: email"></span>
+                                                        </a>
+                                                        <br>
+                                                        <a href="#" data-bind="phoneNumber: phoneNumber" target="_self">
+                                                            <span class="glyphicon glyphicon-earphone"></span>
+                                                            <span data-bind=" text: ' ' + phoneNumber()"></span>
+                                                        </a>
+                                                        <br>
+                                                    </address>
+                                                </li>
+                                                <!-- /ko -->
+                                                <!-- /ko -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mart2" style="margin-left: 0px; margin-right: 0px">
+                    <div class="col-md-12" data-bind="compose: $parent.measures">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <div class="col-md-12" data-bind="compose: $parent.surveysOverviewViewModel"></div>
+            </div>
+        </div>
+        <div class="row mart2">
+            <div class="col-md-6" data-bind="compose: $parent.totalConsumptionChart">
+            </div>
+            <div class="col-md-6" data-bind="compose: $parent.companyRanking">
+
+            </div>
+        </div>
+        <div class="row mart2">
+            <div class="col-md-4" data-bind="compose: $parent.energyConsumptionPieChart">
+            </div>
+            <div class="col-md-4" data-bind="compose: $parent.energyConsumptionLineChart">
+            </div>
+            <div class="col-md-4" data-bind="compose: $parent.energyConsumptionBarChart">
+            </div>
+        </div>
+        <div class="row mart2">
+            <div class="col-md-4" data-bind="compose: $parent.carbonDioxideEmissionPieChart">
+            </div>
+            <div class="col-md-4" data-bind="compose: $parent.carbonDioxideEmissionLineChart">
+            </div>
+            <div class="col-md-4" data-bind="compose: $parent.carbonDioxideEmissionBarChart">
+            </div>
+        </div>
+    </div>
+</div>

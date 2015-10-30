@@ -1,0 +1,6 @@
+﻿<div data-bind="validationElement: model.description">
+    <textarea style="resize: vertical;" class="col-md-9" data-bind="value: model.description, attr: { readonly: survey.fulfilled(), placeholder: language.getValue('whatIsImportant_placeholder') }"></textarea>
+    <span data-bind="if: !survey.fulfilled()">
+        <span class="col-md-3 input-group-btn glyphicon glyphicon-trash tools centeredTrash" data-bind="command: del, tooltip: { title: language.getValue('deleteRecord'), placement: 'left', delay: { show: 500 } }"></span>
+    </span>
+</div>

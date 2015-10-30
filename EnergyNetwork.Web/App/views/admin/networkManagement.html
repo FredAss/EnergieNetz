@@ -1,0 +1,91 @@
+﻿<div id="dashboard">
+    <div class="st-offcanvas">
+        <div class="st-offcanvas-menu submenu" style="width: 275px">
+            <div class="input-group">
+                <input type="search" class="form-control" data-bind="value: searchText, valueUpdate: 'afterkeydown', attr: { 'placeholder': language.getValue('search') }">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <div class="panel panel-default mart5" style="padding-bottom: 5px;">
+                <div class="panel-heading">
+                    <span data-bind="text: language.getValue('selectNetwork')"></span>
+                </div>
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="allNetworks" class="active" data-bind="with: networksViewModel">
+                        <a href="#" data-bind="text: language.getValue('all'), click: function (data) {  $parent.changeSelectedItem($data)}"></a>
+                    </li>
+                    <!-- ko template: {foreach: filteredNetworks, beforeRemove: hideElement, afterAdd: showElement} -->
+                    <li style="overflow: hidden">
+                        <a href="#" data-bind="click: function (data) { $parent.changeSelectedItem($data) }, clickBubble: false">
+                            <span data-bind="text: name"></span>
+                            <span class="badge pull-right" data-bind="text: filteredNetworkCompanies().length, tooltip: { title: language.getValue('participant'), placement: 'left' }"></span>
+                            <!--<span class="glyphicon glyphicon-pencil pull-right" data-bind="command: $parent.openEditorCommand" onclick=""></span>-->
+                        </a>
+                        <ul class="nav nav-pills nav-stacked" 
+                            style="height: 0px; padding: 0px 0px 0px 20px" 
+                            data-bind="attr: { id: networkId },
+                            template: {
+                              foreach: filteredNetworkCompanies,
+                              beforeRemove: $parent.hideElement,
+                              afterAdd: $parent.showElement
+                            }">
+                            
+                            <li class="navitem"
+                                data-bind="event: { mouseover: function () { $parents[1].mouseOverCompany($data); $parents[1].canShowCompanyEditButton(true) },
+                             mouseout: function () { $parents[1].canShowCompanyEditButton(false) } }">
+                                <a href="#"
+                                   data-bind="click: function (data) { $parents[1].changeSelectedItem($data) },
+                              attr: { id: networkCompanyId },
+                              tooltip:{title: company() !== null ? company().name : '' , placement: 'top', delay: { show: 500}},
+                              trimText: company() !== null ? company().name : '', trimTextLength: 20">
+                                </a>
+                                <!--<span class="pull-right glyphicon glyphicon-pencil tools"
+                                      data-bind="style:{ display: (($data == $parents[1].mouseOverCompany()) && $parents[1].canShowCompanyEditButton()) ? 'inline-block' : 'none'},
+                                 click: $parents[1].openNetworkEditorCommand">
+
+                                </span>-->
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+            <div>
+                <button type="button" class="btn btn-default btn-add" data-bind="click: openNetworkAddDialog">
+                    <span class="glyphicon glyphicon-plus"></span> 
+                    <span data-bind="text: language.getValue('add')"></span>
+                </button>
+            </div>
+        </div>
+        <div class="st-offcanvas-main">
+            <div class="row well submenubar">
+                <a href="#" class="showmenubutton"><i class="fa fa-th"></i></a>
+                <div class="btn-group" data-bind="if: selectedItem">
+                    <!-- ko with: submenu -->
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span data-bind="text: buttonLabel"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" data-bind="foreach: commands">
+                        <li>
+                            <a href="#" data-bind="click: command">
+                                <span data-bind="attr: {'class': icon}"></span>
+                                <span data-bind="text: language.getValue(label)"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /ko -->
+                </div>
+                <a href="#" class="showadditionalbutton pull-right hidden-xs" data-bind="text: language.getValue('lastChanges')"></a>
+                <a href="#" class="showadditionalbutton pull-right visible-xs fa fa-clock-o" style="font-size: 24px;"></a>
+            </div>
+            <div class="mart2">
+                <!--ko router: {cacheViews:true }--><!--/ko-->
+            </div>
+            <hr class="mart2" />
+        </div>
+        <div class="st-offcanvas-additional changeLog" style="width: 275px" data-bind="compose: changeLogViewModel"></div>
+    </div>
+</div>

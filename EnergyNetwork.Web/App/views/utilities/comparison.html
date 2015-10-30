@@ -1,0 +1,240 @@
+﻿<style>
+    .axisLabel {
+        font-size: 12px;
+        position: absolute;
+        text-align: center;
+    }
+
+    .yaxisLabel {
+        left: -20px;
+        top: 50%;
+    }
+</style>
+
+<div role="tabpanel">
+  
+  <!-- ko if: hasError-->
+  <div data-bind="text: language.getValue('comparison_error')"></div>
+  <!-- /ko -->
+
+  <!-- ko ifnot: hasError-->
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Übersicht" aria-controls="Übersicht" role="tab" data-toggle="tab" data-bind="text: language.getValue('overview')"></a></li>
+    <li role="presentation"><a href="#Zahlungsplan" aria-controls="Zahlungsplan" role="tab" data-toggle="tab" data-bind="text: language.getValue('paymentPlan')"></a></li>
+    <li role="presentation"><a href="#Sensitivitätsanalyse" aria-controls="Sensitivitätsanalyse" role="tab" data-toggle="tab" data-bind="text: language.getValue('sensitivityAnalysis')"></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="Übersicht">
+      <div style="padding-top: 50px" class="hidden-xs"></div>
+      <div style="padding-top: 15px" class="visible-xs"></div>
+      <div class="row" data-bind="with: financialCalculation">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-12" style="text-align: center">
+              <h2 data-bind="text: language.getValue('results')"></h2>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 15px; font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('staticAmortization')"></span>
+            </div>
+            <div class="col-xs-6" style="text-align: left">
+              <span data-bind="valueNumber: staticAmortization, numberFormat: 'n1'"></span>
+              <span style=" font-size: 14px;vertical-align: bottom;">a </span>
+              <span data-bind="valueNumber: staticAmortizationPercentage, numberFormat: 'n2'"></span>
+              <span style="font-size: 14px;vertical-align: bottom;" data-bind="text: '% ' + language.getValue('fromLifetimeAbbreviation')"></span>
+            </div>
+          </div>
+          <div class="row" style=" font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('amortization')"></span>
+              <span style="font-size: 22px; vertical-align: bottom;" data-bind="valueNumber: interestRate, numberFormat: 'n1' "></span>
+              <span style="font-size: 14px; vertical-align: bottom;">%</span>
+            </div>
+            <div class="col-xs-6" style="text-align: left">
+              <span style="font-size: 26px;" data-bind="valueNumber: amortisation10Percent, numberFormat: 'n1'"></span>
+              <span style="font-size: 14px; vertical-align: bottom;">a </span>
+              <span style="font-size: 26px; vertical-align: bottom;" data-bind="valueNumber: amortisation10PercentPercentage, numberFormat: 'n2'"></span>
+              <span style="font-size: 14px;vertical-align: bottom;" data-bind="text: '% ' + language.getValue('fromLifetimeAbbreviation')"></span>
+            </div>
+          </div>
+          <div class="row" style=" font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('capitalValue')"></span>
+              <span style="font-size: 22px; vertical-align: bottom;" data-bind="valueNumber: interestRate, numberFormat: 'n1'"></span>
+              <span style="font-size: 14px; vertical-align: bottom;">%</span>
+            </div>
+            <div class="col-xs-6" style="text-align: left">
+              <span style="font-size: 26px;" data-bind="valueNumber: capitalValue10Percent, numberFormat: 'n0'"></span>
+              <span style="font-size: 14px; vertical-align: bottom;">€</span>
+            </div>
+          </div>
+          <div class="row" style=" font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('internalInterestRate')"></span>
+            </div>
+            <div class="col-xs-6" style="text-align: left">
+              <span style="font-size: 26px;" data-bind="valueNumber: interneVerzinsung*100, numberFormat: 'n2'"></span>
+              <span style="font-size: 14px; vertical-align: bottom;">%</span>
+            </div>
+          </div>
+          <div class="row" style="font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span></span>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span style="font-size: 14px;">
+                    <span data-bind="text: language.getValue('old')"></span> /
+                    <span data-bind="text: language.getValue('new')"></span>
+                  </span>
+                </div>
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span style="font-size: 14px;" data-bind="text: language.getValue('newEffectiveAbbreviation')"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('annualCostsInclAnnualInvestment')"></span>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span style="font-size: 26px;" data-bind="valueNumber: jahreskostenAltNeu , numberFormat: 'n0'"></span>
+                  <span style="font-size: 14px; vertical-align: bottom;">€/a</span>
+                </div>
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span style="font-size: 26px;" data-bind="valueNumber: jahreskostenVergleich , numberFormat: 'n0'"></span>
+                  <span style="font-size: 14px; vertical-align: bottom;">€/a</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="font-size: 26px;">
+            <div class="col-xs-6" style="text-align: right">
+              <span style="font-size: 14px; vertical-align: bottom;" data-bind="text: language.getValue('annualCostSaving')"></span>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span></span>
+                </div>
+                <div class="col-xs-6 col-md-3" style="padding-left: 0; text-align: left;">
+                  <span style="font-size: 26px;" data-bind="valueNumber: kostenersparnis, numberFormat: 'n0'"></span>
+                  <span style="font-size: 14px; vertical-align: bottom;">€/a</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 50px" class="hidden-xs"></div>
+      <div style="padding-top: 15px" class="visible-xs"></div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 ">
+          <!--ko compose: zinsenChart-->
+          <!-- /ko -->
+          <div class=" row" style="font-size: 12px">
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('imputedInterestRate')"></span>
+
+            </div>
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('internalInterestRate')"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <!--ko compose: capitalChart-->
+          <!-- /ko -->
+          <div class=" row" style="font-size: 12px">
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('investmentSum')"></span>
+
+            </div>
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('capitalValue')"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 ">
+          <!--ko compose: zeitChart-->
+          <!-- /ko -->
+          <div class=" row" style="font-size: 12px">
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('dynamicAmortization')"></span>
+
+            </div>
+            <div class=" col-xs-6" style="text-align: center">
+              <span data-bind="text: language.getValue('lifetime')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Zahlungsplan" data-bind="with: financialCalculation">
+      <div class="row mart2">
+        <div class="col-xs-12">
+          <table id="zahlungsplanTable" class="tablesorter">
+            <thead>
+              <tr>
+                <th data-bind="text: language.getValue('year')"></th>
+                <th data-bind="text: language.getValue('annualReturn')"></th>
+                <th data-bind="text: language.getValue('interestPayments')"></th>
+                <th data-bind="text: language.getValue('repayment')"></th>
+                <th data-bind="text: language.getValue('surplus')"></th>
+                <th data-bind="text: language.getValue('residualDebt')"></th>
+                <th data-bind="text: language.getValue('capitalValue')"></th>
+              </tr>
+            </thead>
+            <tbody data-bind="foreach: payments">
+              <tr class="pointable">
+                <td data-bind="text: year"></td>
+                <td data-bind="valueNumber: jährlicherRückfluss, numberFormat: 'n0'"></td>
+                <td data-bind="valueNumber: zins, numberFormat: 'n0'"></td>
+                <td data-bind="valueNumber: tilgung, numberFormat: 'n0'"></td>
+                <td data-bind="valueNumber: überschüsse, numberFormat: 'n0'"></td>
+                <td data-bind="valueNumber: abzahlungsbetrag, numberFormat: 'n0'"></td>
+                <td data-bind="valueNumber: kapitalwert, numberFormat: 'n0'"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Sensitivitätsanalyse">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a data-bind="attr: { 'aria-controls': additionalInvestmentTabId, href: '#' + additionalInvestmentTabId }, text: language.getValue('additionalInvestmentEff')" aria-controls="Übersicht" role="tab" data-toggle="tab"></a></li>
+        <li role="presentation"><a data-bind="attr: {'aria-controls' : additionalAnnualCostsAndRevenuesTabId, href: '#' + additionalAnnualCostsAndRevenuesTabId}, text: language.getValue('annualCostsAndRevenues')" aria-controls="Zahlungsplan" role="tab" data-toggle="tab"></a></li>
+        <li role="presentation"><a data-bind="attr: { 'aria-controls': additionalOperatingLifeTabId, href: '#' + additionalOperatingLifeTabId }, text: language.getValue('lifetime')" aria-controls="Sensitivitätsanalyse" role="tab" data-toggle="tab">Nutzungsdauer</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" data-bind="attr: {id : additionalInvestmentTabId}">
+          <div class="row">
+            <!--ko compose: additionalInvestment-->
+            <!-- /ko -->
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" data-bind="attr: {id : additionalAnnualCostsAndRevenuesTabId}">
+          <div class="row">
+            <!--ko compose: additionalAnnualCostsAndRevenues-->
+            <!-- /ko -->
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" data-bind="attr: {id : additionalOperatingLifeTabId}">
+          <div class="row">
+            <!--ko compose: additionalOperatingLife-->
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>

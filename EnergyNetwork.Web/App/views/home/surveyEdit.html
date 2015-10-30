@@ -1,0 +1,88 @@
+﻿<div class="modal-content" style="padding: 10px; position: fixed; width: 90%;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="command: cancelChangesCommand" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>
+            <span data-bind="text: model.title() + ' → ' + model.networkCompany().company().name()"></span>
+            <span style="float: right">
+                <span style="font-weight: bold" data-bind="text: currentStep()+1"></span>
+                <span>/9</span>
+            </span>
+        </h3> 
+    </div>
+    <div class="modal-body survey-dialog">
+        <div class="panel panel-default col-md-3 hidden-xs hidden-sm" style="padding-bottom: 5px;">
+            <div class="panel-heading">
+                <span data-bind="text: language.getValue('content')"></span>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li data-bind="css: { active: currentStep() === 0}">
+                    <a href="#" data-bind="text: language.getValue('generalInformation'), click: function () { setContext(0) }"></a>
+                    <ul class="nav nav-pills nav-stacked" style="padding: 0px 0px 0px 20px">
+                        <li class="navitem" data-bind="css: { active: currentStep() === 0 }">
+                            <a href="#" data-bind="click: function () { setContext(0) }, text: language.getValue('businessYear')"></a>
+                        </li>
+                    </ul>
+                </li>
+              <li data-bind="css: { active: currentStep() > 0 && currentStep() < 6}">
+                <a href="#" data-bind="click: function () { setContext(1) }">
+                  <span data-bind="text: language.getValue('basicData')" ></span>
+                  <span data-bind="css: {'glyphicon-ok-sign': basicDataIsFilled() && basicDataIsValid(), 'glyphicon-remove-sign': !basicDataIsFilled() || !basicDataIsValid() }" class="glyphicon pull-right" style="color:black; padding-right: 22px;"></span>
+                </a>
+                
+                <ul class="nav nav-pills nav-stacked" style="padding: 0px 0px 0px 20px">
+                  <li class="navitem" data-bind="css: { active: currentStep() === 1 }">
+                    <a href="#" data-bind="click: function () { setContext(1) }, text: language.getValue('sizeOfEnterprise')"></a>
+                    <span data-bind="css: { 'glyphicon-ok-sign': companySizeEditViewModel().isFilled() && companySizeEditViewModel().isValid(), 'glyphicon-remove-sign': !companySizeEditViewModel().isFilled() || !companySizeEditViewModel().isValid() }" class="glyphicon pull-right"></span>
+                  </li>
+                  <li class="navitem" data-bind="css: { active: currentStep() === 2 }">
+                    <a href="#" data-bind="click: function () { setContext(2) }, text: language.getValue('areas')"></a>
+                    <span data-bind="css: { 'glyphicon-ok-sign': areasEditViewModel().isFilled() && areasEditViewModel().isValid(), 'glyphicon-remove-sign': !areasEditViewModel().isFilled() || !areasEditViewModel().isValid() }" class="glyphicon pull-right"></span>
+                  </li>
+                  <li class="navitem" data-bind="css: { active: currentStep() === 3 }">
+                    <a href="#" data-bind="click: function () { setContext(3) }, text: language.getValue('manufacturedMajorProducts')"></a>
+                    <span data-bind="css: { 'glyphicon-ok-sign': productsEditViewModel().isFilled() && productsEditViewModel().isValid(), 'glyphicon-remove-sign': !productsEditViewModel().isFilled() || !productsEditViewModel().isValid() }" class="glyphicon pull-right"></span>
+                  </li>
+                  <li class="navitem" data-bind="css: { active: currentStep() === 4 }">
+                    <a href="#" data-bind="click: function () { setContext(4) }, text: language.getValue('productionTimes')"></a>
+                    <span data-bind="css: { 'glyphicon-ok-sign': productionTimesEditViewModel().isFilled() && productionTimesEditViewModel().isValid(), 'glyphicon-remove-sign': !productionTimesEditViewModel().isFilled() || !productionTimesEditViewModel().isValid() }" class="glyphicon pull-right"></span>
+                  </li>
+                  <li class="navitem" data-bind="css: { active: currentStep() === 5 }">
+                    <a href="#" data-bind="click: function () { setContext(5) }, text: language.getValue('operationTimes')"></a>
+                  </li>
+                </ul>
+              </li>
+                <li data-bind="css: { active: currentStep() === 6 }">
+                    <a href="#" data-bind="text: language.getValue('energyRelatedData'), click: function () { setContext(6) }"></a>
+                </li>
+                <li data-bind="css: { active: currentStep() === 7 }">
+                    <a href="#" data-bind="text: language.getValue('importantTopics'), click: function () { setContext(7)}"></a>
+                </li>
+                <li data-bind="css: { active: currentStep() === 8 }">
+                    <a href="#" data-bind="text: language.getValue('documents'), click: function () { setContext(8)}"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 " style="overflow: hidden; overflow-x: auto; padding-left: 30px;">
+            <div data-bind="compose: context"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-4 col-xs-4">
+              <button type="button" class="btn btn-primary pull-left" data-bind="command: sendCommand, text: language.getValue('send'), activity: sendCommand.isExecuting" data-dismiss="modal"></button>
+              <!-- ko if: appsecurity.isUserInRole(['Administrator']) -->
+              <button type="button" class="btn btn-primary pull-left" data-bind="click: releaseAgainSurvey, text: language.getValue('releaseAgain'), visible: model.fulfilled"></button>
+              <!-- /ko -->
+            </div>
+            <div class="col-md-4 col-xs-4" style="text-align: center">
+              <button id="previousButton" type="submit" data-bind="command: previous, text: language.getValue('back'), activity: previous.isExecuting" class="btn btn-primary"><span class="hidden-sm hidden-xs"></span><span class="hidden-md hidden-lg glyphicon glyphicon-arrow-left"></span></button>
+              <button id="nextButton" type="submit" data-bind="command: next, text: language.getValue('next'), activity: next.isExecuting" class="btn btn-primary"><span class="hidden-sm hidden-xs"></span><span class="hidden-md hidden-lg glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <button type="button" class="btn btn-default" data-bind="command: cancelChangesCommand, text: model.fulfilled() ? language.getValue('close') : language.getValue('cancel')" data-dismiss="modal"></button> <!-- activity not working in this composition -->
+              <button type="submit" class="btn btn-primary" data-bind="command: saveChangesCommand, text: language.getValue('save'), activity: saveChangesCommand.isExecuting"></button>
+            </div>
+        </div>
+    </div>
+</div>

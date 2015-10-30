@@ -1,0 +1,12 @@
+﻿<div class="modal-content dialogWidth" style="padding: 10px; position: fixed;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="click: close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: displayName"></h3>
+    </div>
+    <div class="modal-body">
+        <div data-bind="attr: { id: mapElementId }" style="height: 350px;"></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bind="click: close, text: language.getValue('close')" data-dismiss="modal"></button>
+    </div>
+</div>

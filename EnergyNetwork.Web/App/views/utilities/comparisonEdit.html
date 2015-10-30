@@ -1,0 +1,185 @@
+﻿<div class="modal-content" style="min-height: 90%; padding: 10px; position: fixed; width: 90%;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="click: cancel" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-6 col-xs-12" data-bind="with:base">
+            <fieldset disabled>
+                <h4>
+                    <span data-bind="text: language.getValue('old')"></span> /
+                    <span data-bind="text: language.getValue('new')"></span>
+                </h4>
+                <div class="form-group" data-bind="validationElement: investmentName">
+                    <label for="title_old" class="control-label" data-bind="text: language.getValue('name')"></label>
+                    <input id="title_old" class="form-control" data-bind="value: investmentName">
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: lifetime">
+                    <label for="lifetime_old" class="control-label" data-bind="text: language.getValue('lifetime')"></label>
+                    <div class="input-group">
+                        <input id="lifetime_old" class="form-control" data-bind="value: lifetime">
+                        <div class="input-group-addon">a</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: imputedInterestRate">
+                    <label for="imputedInterestRate_old" class="control-label" data-bind="text: language.getValue('imputedInterestRate')"></label>
+                    <div class="input-group">
+                        <input id="imputedInterestRate_old" class="form-control" data-bind="percentage: imputedInterestRate, numberFormat: 'n2'">
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: investmentSum">
+                    <label for="investmentSum_old" class="control-label" data-bind="text: language.getValue('investmentSum')"></label>
+                    <div class="input-group">
+                        <input id="investmentSum_old" class="form-control" data-bind="value: investmentSum">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: recoveryValueToday">
+                    <label for="recoveryValueToday_old" class="control-label" data-bind="text: language.getValue('recoveryValueToday')"></label>
+                    <div class="input-group">
+                        <input id="recoveryValueToday_old" class="form-control" data-bind="value: recoveryValueToday">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: recoveryValueAfterLifetime">
+                    <label for="recoveryValueAfterLifetime_old" class="control-label" data-bind="text: language.getValue('recoveryValueAfterLifetime')"></label>
+                    <div class="input-group">
+                        <input id="recoveryValueAfterLifetime_old" class="form-control" data-bind="value: recoveryValueAfterLifetime">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: energyCostsAnnual">
+                    <label for="energyCostsAnnual_old" class="control-label" data-bind="text: language.getValue('energyCostsAnnual')"></label>
+                    <div class="input-group">
+                        <input id="energyCostsAnnual_old" class="form-control" data-bind="value: energyCostsAnnual">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: energyCostsChangePA">
+                    <label for="energyCostsChangePA_old" class="control-label" data-bind="text: language.getValue('energyCostsChangePA')"></label>
+                    <div class="input-group">
+                        <input id="energyCostsChangePA_old" class="form-control" data-bind="percentage: energyCostsChangePA, numberFormat: 'n2'">
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherCostsPA">
+                    <label for="otherCostsPA_old" class="control-label" data-bind="text: language.getValue('otherCostsPA')"></label>
+                    <div class="input-group">
+                        <input id="otherCostsPA_old" class="form-control" data-bind="value: otherCostsPA">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherCostsChangePA">
+                    <label for="otherCostsChangePA_old" class="control-label" data-bind="text: language.getValue('otherCostsChangePA')"></label>
+                    <div class="input-group">
+                        <input id="otherCostsChangePA_old" class="form-control" data-bind="percentage: otherCostsChangePA, numberFormat: 'n2'">
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherRevenuePA">
+                    <label for="otherRevenuePA_old" class="control-label" data-bind="text: language.getValue('otherRevenuePA')"></label>
+                    <div class="input-group">
+                        <input id="otherRevenuePA_old" class="form-control" data-bind="value: otherRevenuePA">
+                        <div class="input-group-addon">€</div>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherRevenueChangePA">
+                    <label for="otherRevenueChangePA_old" class="control-label" data-bind="text: language.getValue('otherRevenueChangePA')"></label>
+                    <div class="input-group">
+                        <input id="otherRevenueChangePA_old" class="form-control" data-bind="percentage: otherRevenueChangePA, numberFormat: 'n2'">
+                        <div class="input-group-addon">%</div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="col-md-6 col-xs-12" data-bind="with: model">
+            <h4 data-bind="text: language.getValue('newEffectiveAbbreviation')"></h4>
+            <div class="form-group" data-bind="validationElement: comparisonName">
+                <label for="title" class="control-label" data-bind="text: language.getValue('name')"></label>
+                <input id="title" type="text" class="form-control" data-bind="value: comparisonName, attr: { placeholder: language.getValue('investmentName_placeholder') }">
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: lifetime">
+                <label for="lifetime" class="control-label" data-bind="text: language.getValue('lifetime')"></label>
+                <div class="input-group">
+                    <input id="lifetime" type="number" min="1" max="50" class="form-control" data-bind="value: lifetime, attr: { placeholder: language.getValue('lifetime_placeholder') }">
+                    <div class="input-group-addon">a</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px; visibility: hidden">
+                <label class="control-label" data-bind="text: language.getValue('imputedInterestRate')"></label>
+                <div class="input-group">
+                    <input class="form-control">
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: investmentSum">
+                <label for="investmentSum" class="control-label" data-bind="text: language.getValue('investmentSum')"></label>
+                <div class="input-group">
+                    <input id="investmentSum" type="number" min="0" max="1000000000" class="form-control" data-bind="value: investmentSum, attr: { placeholder: language.getValue('investmentSum_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: recoveryValueToday">
+                <label for="recoveryValueToday" class="control-label" data-bind="text: language.getValue('recoveryValueToday')"></label>
+                <div class="input-group">
+                    <input id="recoveryValueToday" type="number" min="-1000000000" max="1000000000" class="form-control" data-bind="value: recoveryValueToday, attr: { placeholder: language.getValue('recoveryValueToday_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: recoveryValueAfterLifetime">
+                <label for="recoveryValueAfterLifetime" class="control-label" data-bind="text: language.getValue('recoveryValueAfterLifetime')"></label>
+                <div class="input-group">
+                    <input id="recoveryValueAfterLifetime" type="number" min="-1000000000" max="1000000000" class="form-control" data-bind="value: recoveryValueAfterLifetime, attr: { placeholder: language.getValue('recoveryValueAfterLifetime_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: energyCostsAnnual">
+                <label for="energyCostsAnnual" class="control-label" data-bind="text: language.getValue('energyCostsAnnual')"></label>
+                <div class="input-group">
+                    <input id="energyCostsAnnual" type="number" min="0" max="1000000000" class="form-control" data-bind="value: energyCostsAnnual, attr: { placeholder: language.getValue('energyCostsAnnual_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: energyCostsChangePA">
+                <label for="energyCostsChangePA" class="control-label" data-bind="text: language.getValue('energyCostsChangePA')"></label>
+                <div class="input-group">
+                    <input id="energyCostsChangePA" type="number" min="-50" max="50" class="form-control" data-bind="percentage: energyCostsChangePA, numberFormat: 'n2', attr: { placeholder: language.getValue('energyCostsChangePA_placeholder') }">
+                    <div class="input-group-addon">%</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherCostsPA">
+                <label for="otherCostsPA" class="control-label" data-bind="text: language.getValue('otherCostsPA')"></label>
+                <div class="input-group">
+                    <input id="otherCostsPA" type="number" min="0" max="1000000000" class="form-control" data-bind="value: otherCostsPA, attr: { placeholder: language.getValue('otherCostsPA_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px; visibility: hidden">
+                <label class="control-label" data-bind="text: language.getValue('otherCostsChangePA')"></label>
+                <div class="input-group">
+                    <input class="form-control">
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px;" data-bind="validationElement: otherRevenuePA">
+                <label for="otherRevenuePA" class="control-label" data-bind="text: language.getValue('otherRevenuePA')"></label>
+                <div class="input-group">
+                    <input id="otherRevenuePA" type="number" min="0" max="1000000000" class="form-control" data-bind="value: otherRevenuePA, attr: { placeholder: language.getValue('otherRevenuePA_placeholder') }">
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-right: 0px; visibility: hidden">
+                <label class="control-label" data-bind="text: language.getValue('otherRevenueChangePA')"></label>
+                <div class="input-group">
+                    <input class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" style="float: left;" data-bind="visible: model.entityAspect.entityState != 'Added', command: del, text: language.getValue('delete'), activity: del.isExecuting" data-dismiss="modal"></button>
+      <button type="button" class="btn btn-default" data-bind="command: cancel, text: language.getValue('cancel'), activity: cancel.isExecuting" data-dismiss="modal"></button>
+        <button type="submit" class="btn btn-primary" data-bind="command: save, text: language.getValue('save'), activity: save.isExecuting"></button>
+    </div>
+</div>

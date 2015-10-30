@@ -1,0 +1,29 @@
+﻿@model EnergyNetwork.Web.Models.ContactMessageNotificationModel
+@{
+    Layout = "OneColumn_Layout.cshtml";
+}
+<repeater>
+    <layout label="Text only">
+        <table class="w580" width="580" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td class="w580" width="580">
+                        <p align="left" class="article-title"><singleline label="Title">Kontakt:</singleline></p>
+                        <div align="left" class="article-content">
+                            <multiline label="Description">
+                                <p>
+                                    Von: <b>@Model.Name <a href="@Model.Email">@Model.Email</a></b><br />
+                                </p>
+                                <p>
+                                    @Model.Subject ,<br />
+                                    @Model.Message
+                                </p>
+                            </multiline>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td class="w580" width="580" height="10"></td></tr>
+            </tbody>
+        </table>
+    </layout>
+</repeater>

@@ -1,0 +1,16 @@
+﻿@model EnergyNetwork.Web.Models.AccountNotificationModel
+
+Guten Tag @Model.DisplayName,
+        
+Ihr Registrierungsantrag ist bei uns eingegangen - vielen Dank dafür.
+Da für die Nutzung von EnergieNetz eine gültige E-Mail Adresse erforderlich ist, bitten wir Sie zur Aktivierung Ihres Antrages auf den folgenden Link zu klicken.
+So können wir sicherstellen, dass die uns vorliegende E-Mail Adresse gültig ist:
+@Html.Raw(Model.Url)
+
+Wie es mit Ihrem Registrierungsantrag anschließend weitergeht, erfahren Sie nach dieser Aktivierung.
+
+Vielen Dank für Ihr Verständnis.
+
+Mit freundlichen Grüßen
+
+Ihr EnergieNetz-Team

@@ -1,0 +1,43 @@
+﻿<div class="modal-content dialogWidth" style="padding: 10px; position: fixed;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="command: cancel" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: displayName"></h3>
+    </div>
+    <div class="modal-body">
+        <form role="form" data-bind="with: model">
+            <div class="col-md-6">
+                <div class="form-group" data-bind="validationElement: name">
+                    <label for="name" class="control-label" data-bind="text: language.getValue('name')"></label>
+                    <input id="name" type="text" class="form-control" data-bind="value: name, attr: { placeholder: language.getValue('networkName_placeholder') }" />
+                </div>
+                <div class="form-group" data-bind="validationElement: description">
+                    <label for="description" class="control-label" data-bind="text: language.getValue('description')"></label>
+                    <textarea id="description" rows="3" class="form-control" data-bind="value: description, attr: { placeholder: language.getValue('networkDescription_placeholder') }" style="resize: none;"></textarea>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 " data-bind="validationElement: startDate, compose: $parent.startDateTimePicker">
+                    </div>
+                    <div class="form-group  col-md-6 " data-bind="validationElement: endDate, compose: $parent.endDateTimePicker">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="companies" class="control-label" data-bind="text: language.getValue('companies')"></label>
+                    <input id="companies" type="text" class="form-control" data-role="tagsinput" data-bind="attr: { placeholder: language.getValue('companyListInputField_placeholder') }">
+                </div>
+
+                <div class="form-group">
+                    <label for="invitations" class="control-label" data-bind="text: language.getValue('invitations')"></label>
+                    <input id="invitations" type="text" class="form-control" data-role="tagsinput" data-bind="attr: { placeholder: language.getValue('emailListInputField_placeholder') }">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" style="float: left;" data-bind="visible: model.entityAspect.entityState != 'Added', command: del, text: language.getValue('delete'), activity: del.isExecuting" data-dismiss="modal"></button>
+      <button type="button" class="btn btn-default" data-bind="command: cancel, text: language.getValue('cancel'), activity: cancel.isExecuting" data-dismiss="modal"></button>
+      <button type="button" class="btn btn-primary" data-bind="command: save, text: language.getValue('save'), activity: save.isExecuting"></button>
+    </div>
+</div>

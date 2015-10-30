@@ -1,0 +1,47 @@
+﻿<tr>
+    <td>
+        <div data-bind="validationElement: model.title">
+            <input class="form-control" type="text" data-bind="value: model.title, attr: { readonly: survey.fulfilled(), placeholder: language.getValue('fileName_placeholder') }" />
+        </div>
+    </td>
+    <td>
+        <div data-bind="validationElement: model.description">
+            <input class="form-control" type="text" data-bind="value: model.description, attr: { readonly: survey.fulfilled(), placeholder: language.getValue('fileDescription_placeholder') }" />
+        </div>
+    </td>
+    <td style="width: 40%">
+      <div class="fileinput fileinput-new input-group" data-provides="fileinput" data-bind="visible: !inDatabase(), validationElement: newFile">
+        <div class="form-control" data-trigger="fileinput">
+          <i class="glyphicon glyphicon-file fileinput-exists"></i>
+          <span class="fileinput-filename" data-bind="text: model.fileName"></span>
+        </div>
+        <span class="input-group-addon btn btn-default btn-file" data-bind="click: openFileDialog">
+          <span class="fileinput-new glyphicon glyphicon-folder-open"></span>
+          <!--<span class="fileinput-exists glyphicon glyphicon-folder-open"></span>-->
+        </span>
+        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-bind="click: removeFile" data-dismiss="fileinput">
+          <i class="glyphicon glyphicon-ban-circle"></i>
+        </a>
+        <input style="display: none;" data-bind="attr: {id: model.documentId}" type="file" name="...">
+      </div>
+        <div class="fileinput fileinput-new input-group" data-provides="fileinput" data-bind="visible: inDatabase">
+            <div class="form-control">
+                <i class="glyphicon glyphicon-file"></i>
+                <span class="fileinput-filename" data-bind="text: model.fileName"></span>
+            </div>
+            <span class="input-group-addon btn btn-default btn-file">
+                <a href="#" target="_blank" data-bind="click: fileDownload">
+                    <span class="fileinput-new glyphicon glyphicon-download"></span>
+                </a>
+            </span>
+            <!-- ko if: !survey.fulfilled() -->
+            <a href="#" class="input-group-addon btn btn-default " data-bind="click: removeFile"><i class="glyphicon glyphicon-ban-circle"></i></a>
+            <!-- /ko -->
+        </div>
+    </td>
+    <td>
+        <!-- ko if: !survey.fulfilled() -->
+        <span class="input-group-btn glyphicon glyphicon-trash tools centeredTrash" data-bind="command: del, tooltip: { title: language.getValue('deleteRecord'), placement: 'left', delay: { show: 500 } }"></span>
+        <!-- /ko -->
+    </td>
+</tr>

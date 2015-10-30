@@ -1,0 +1,190 @@
+﻿<div style="padding-top: 15px"></div>
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-sm-8">
+        </div>
+        <div class="col-sm-4 col-xs-12">
+            <div class="row" style="font-size: 44px">
+                <div class="col-sm-11 col-xs-8" style="padding-right: 0px; text-align: right;" data-bind="with: financialCalculation">
+                    <span data-bind="valueNumber: kreditFürInvestition, numberFormat: 'n2'"></span>
+                </div>
+                <div class="col-sm-1 col-xs-4" style="padding: 0 0 0 0">
+                    <span style="font-size: 20px; padding-left: 0px; text-align: left; vertical-align: bottom;">€</span>
+                </div>
+            </div>
+            <div class="row" style="font-size: 44px">
+                <div class="col-sm-8 col-xs-4" style="font-size: 38px; text-align: right;">
+                    <span>+/-</span>
+                </div>
+                <div class="col-sm-3 col-xs-4" style="padding-right: 0px; text-align: right;">
+                    <span data-bind="text: selectedValue"></span>
+                </div>
+                <div class="col-sm-1 col-xs-4" style="padding: 0 0 0 0">
+                    <span style="font-size: 20px; padding-left: 0px; text-align: left; vertical-align: bottom;">%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div style="padding-top: 15px" ></div>
+                <div class="col-xs-12" style="padding-right: 0px; text-align: right;">
+                    <input type="text" class="slider" style="width: 100%" data-bind="attr: {id: inputSlider},sliderValue: {value: selectedValue, min:0, max: 50, step: 1, tooltip: 'hide'}" />
+                </div>
+            </div>
+            <div style="padding-top: 30px" class="visible-xs"></div>
+        </div>
+    </div>
+</div>
+
+<div style="padding-top: 50px" class="hidden-xs"></div>
+<div style="padding-top: 15px" class="visible-xs"></div>
+
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : kapitalWertZusätzlicheKostenPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: {'data-parent' : '#'+kapitalWertZusätzlicheKostenPanelId, href: '#' + kapitalWertZusätzlicheKostenCollapseId}, text: language.getValue('capitalValue') + ': ' + language.getValue('variationInAdditionalInvestment')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : kapitalWertZusätzlicheKostenCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: kapitalWertZusätzlicheKostenChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId1" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('investmentSum') + ' (€)'"></th>
+                                    <th data-bind="text: language.getValue('capitalValue') + ' (€)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="valueNumber: value2, numberFormat: 'n0'"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : interneVerzinsungZusätzlicheKostenPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + interneVerzinsungZusätzlicheKostenPanelId, href: '#' + interneVerzinsungZusätzlicheKostenCollapseId }, text: language.getValue('internalInterestRate') + ': ' + language.getValue('variationInAdditionalInvestment')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : interneVerzinsungZusätzlicheKostenCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: interneVerzinsungZusätzlicheKostenChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId2" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('investmentSum') + ' (€)'"></th>
+                                    <th data-bind="text: language.getValue('internalInterestRate') + ' (%)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="percentage: value3, numberFormat: 'n0'"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : dynamischeAmzZusätzlicheKostenPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + dynamischeAmzZusätzlicheKostenPanelId, href: '#' + dynamischeAmzZusätzlicheKostenCollapseId }, text: language.getValue('dynamicAmortization') + ': ' + language.getValue('variationInAdditionalInvestment')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : dynamischeAmzZusätzlicheKostenCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: dynamischeAmzZusätzlicheKostenChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId3" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('investmentSum') + ' (€)'"></th>
+                                    <th data-bind="text: language.getValue('dynamicAmortization') + ' (a)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="valueNumber: value4, numberFormat: 'n1'"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default" data-bind="attr: {id : statischeAmzZusätzlicheKostenPanelId}">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-bind="attr: { 'data-parent': '#' + statischeAmzZusätzlicheKostenPanelId, href: '#' + statischeAmzZusätzlicheKostenCollapseId }, text: language.getValue('staticAmortization') + ': ' + language.getValue('variationInAdditionalInvestment')"></a>
+                <!--<span class="glyphicon glyphicon-pencil tools" style="float: right; margin: 0 5px;" data-bind="command: $parent.commands.openNetworkEditorCommand"></span>-->
+            </h3>
+        </div>
+        <div data-bind="attr: {id : statischeAmzZusätzlicheKostenCollapseId}" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <!--ko compose: statischeAmzZusätzlicheKostenChartViewModel-->
+                        <!-- /ko -->
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <table id="tableId4" class="tablesorter">
+                            <thead>
+                                <tr>
+                                    <th data-bind="text: language.getValue('investmentSum') + ' (€)'"></th>
+                                    <th data-bind="text: language.getValue('staticAmortization') + ' (a)'"></th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: tableData">
+                                <tr class="pointable">
+                                    <td data-bind="valueNumber: value1 , numberFormat: 'n0'"></td>
+                                    <td data-bind="valueNumber: value5, numberFormat: 'n1'"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

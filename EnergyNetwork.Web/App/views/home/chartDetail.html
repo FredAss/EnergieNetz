@@ -1,0 +1,55 @@
+﻿<div class="modal-content" style="min-height: 90%; padding: 10px; position: fixed; width: 90%;">
+    <div class="modal-header">
+        <button type="button" class="close" data-bind="click: close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 data-bind="text: title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div data-bind="attr: { id: chartId }" style="cursor: pointer; height: 350px;"></div>
+            </div>
+            <div class="col-md-12 mart2">
+                <div class="panel-group" id="accordion">
+                    <!-- ko foreach : tableData[1] -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-bind="text: language.getValue(name), attr: { href: '#' + name }"></a>
+                            </h4>
+                        </div>
+                        <div data-bind="attr: { id: name }, css: {'in': ($parent.tableData[1].length - 1) === $index() }" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th data-bind="text: language.getValue('company')"></th>
+                                            <!-- ko  foreach : $parent.tableData[0] -->
+                                            <th data-bind="text: year"></th>
+                                            <!-- /ko -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- ko  foreach : values -->
+                                        <tr>
+                                            <td data-bind="text: company"></td>
+                                            <!-- ko  foreach : values -->
+                                            <td>
+                                                <span data-bind="valueNumber: value, numberFormat: 'n0'"></span><span data-bind="visible: value != '-'">&nbsp;MWh</span>
+                                            </td>
+                                            <!-- /ko -->
+                                        </tr>
+                                        <!-- /ko -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bind="click: close, text: language.getValue('close')" data-dismiss="modal"></button>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<h4 data-bind="text: language.getValue('businessYear')"></h4>
+<div class="row mart1" >
+    <form class="form-horizontal col-md-10 col-sm-10" data-bind="with: model()">
+        <div class="form-group" style="margin-bottom: 15px">
+            <label for="isCalendarYear" class="control-label col-sm-7 col-lg-7" data-bind="text: language.getValue('businessYearCorrespondsToCalenderYear')"></label>
+            <div class="col-lg-1 col-sm-1 input-group">
+                <input id="isCalendarYear" type="checkbox" class="form-control" data-bind="checked: isCalendarYear, attr: { disabled: $parent.survey.fulfilled }" />
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px">
+            <label for="isKMU" class="control-label col-lg-7 col-sm-7" data-bind="text: language.getValue('isSmallAndMediumSizedCompany')"></label>
+            <div class="col-lg-1 col-sm-1 input-group">
+                <input id="isKMU" type="checkbox" class="form-control" data-bind="checked: isKMU, attr: { disabled: $parent.survey.fulfilled }" />
+            </div>
+        </div>
+    </form>
+</div>

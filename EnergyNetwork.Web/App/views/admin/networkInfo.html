@@ -1,0 +1,28 @@
+﻿<div class="panel panel-default" id="infoPanel" data-bind="with: model">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#infoPanel" href="#infoCollapse" data-bind="text: language.getValue('generalInformation')"></a>
+        </h3>
+    </div>
+    <div id="infoCollapse" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <div class="row">
+                <div class="row" style="font-size: 12px">
+                    <span data-bind="text: language.getValue('start') + ': '+ formattedStartDate()"></span>
+                    <span data-bind="text: language.getValue('end') + ': ' + formattedEndDate()" class="pull-right"></span>
+                </div>
+                <div class="row">
+                  <div style="padding: 0; width: 100%;" data-bind="progress: {value: timeProgress , textHidden: false, text: $parent.translatedFinished}" class="col-md-12"></div>
+                </div>
+            </div>
+            <div class="row">
+                <span data-bind="text: language.getValue('totalParticipants')"></span>
+                <span data-bind="text: networkCompanies().length" style="font-size: 28px"></span>
+              <a class="pull-right mart2 hidden-xs" href="#" style="color:black;" data-bind="click: $parent.showMap">
+                <span data-bind="text: language.getValue('map')"></span>
+                <span class="glyphicon glyphicon-globe" style="font-size: 20px; cursor: pointer;" data-bind="tooltip: { title: language.getValue('displayMap'), placement: 'left' }"></span>
+              </a>
+            </div>
+        </div>
+    </div>
+</div>

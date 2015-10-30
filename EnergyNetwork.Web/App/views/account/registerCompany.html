@@ -1,0 +1,37 @@
+﻿<div class="row mart2" style="margin-left: -20px; margin-right: -15px;">
+    <div class="col-lg-offset-3 col-lg-6">
+        <form class="form-horizontal">
+            <div class="form-group" data-bind="validationElement: companyName" style="margin-bottom: 15px">
+                <label for="companyName" class="control-label col-lg-4" data-bind="text: language.getValue('companyName')"></label>
+                <div class="col-lg-8">
+                    <input id="companyName" type="text" class="form-control" data-bind="value: companyName, attr: { placeholder: language.getValue('companyName_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: street" style="margin-bottom: 15px">
+                <label for="street" class="control-label col-lg-4" data-bind="text: language.getValue('street')"></label>
+                <div class="col-lg-8">
+                    <input id="street" type="text" class="form-control" data-bind="value: street, attr: { placeholder: language.getValue('street_placeholder') }" />
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <div class="input-group" style="width: 100%">
+                    <span data-bind="validationElement: postalCode">
+                        <label for="postalCode" class="control-label col-lg-4 col-sm-12 small-leftalign" data-bind="text: language.getValue('postalCodeAbbreviation') + ' & ' + language.getValue('city')"></label>
+                        <span class="col-lg-4 col-sm-6">
+                            <input id="postalCode" type="text" class="form-control" data-bind="value: postalCode, attr: { placeholder: language.getValue('postalCode_placeholder') }" />
+                        </span>
+                    </span>
+                    <span class="col-lg-4 col-sm-6" data-bind="validationElement: city">
+                        <input id="city" type="text" class="form-control" data-bind="value: city, attr: { placeholder: language.getValue('city_placeholder') }" />
+                    </span>
+                </div>
+            </div>
+            <div class="form-group" data-bind="validationElement: website" style="margin-bottom: 15px">
+                <label for="website" class="control-label col-lg-4" data-bind="text: language.getValue('website')"></label>
+                <div class="col-lg-8">
+                    <input id="website" type="url" class="form-control" data-bind="value: website, attr: { placeholder: language.getValue('website_placeholder') }" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

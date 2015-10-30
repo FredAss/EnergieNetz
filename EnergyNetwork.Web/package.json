@@ -1,0 +1,14 @@
+﻿{
+    "name": "energieNetz",
+    "description": "A package using energieNetz versioning",
+    "author": "Max <schnm@htw-berlin.de>",
+    "dependencies": { 
+        "q": "^1.2.0"
+    },
+    "devDependencies": {
+        "gulp": "^3.8.11",
+        "gulp-util": "^3.0.4",
+        "gulp-durandal": "^1.1.7",
+        "del": "^1.1.1"
+  }
+}
